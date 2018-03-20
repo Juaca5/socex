@@ -10,8 +10,8 @@ Execute following commands to run this application.
 
 
 ```
-$ git clone https://github.com/srinivastamada/ionic-welcome.git
-$ cd ionic-welcome
+$ git clone https://github.com/Juaca5/socex.git
+$ cd socex
 $ npm install
 $ ionic serve
 
