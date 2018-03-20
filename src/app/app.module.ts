@@ -8,7 +8,12 @@ import { Login } from '../pages/login/login';
 import { Signup } from '../pages/signup/signup';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
+
 import { HomePage } from '../pages/home/home';
+import { PlacePage } from '../pages/place/place';
+import { NotificationPage } from '../pages/notification/notification';
+import { ConfigurationPage } from '../pages/configuration/configuration';
+
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,6 +28,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    PlacePage,
+    NotificationPage,
+    ConfigurationPage,
     TabsPage
   ],
   imports: [
@@ -38,6 +46,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
+    PlacePage,
+    NotificationPage,
+    ConfigurationPage,
     TabsPage
   ],
   providers: [

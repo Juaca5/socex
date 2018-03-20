@@ -1,11 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />
-    <ion-title>Home</ion-title>
+    <img src="assets/imgs/logosocex.png" class="navbarLogo" />
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Banana Project</h2>
+
+  <h2 text-center>Welcome to Juan</h2>
+
+  <button ion-button round full>Tienes 3 notificaiones</button>
+
+  <ion-img center width="340" height="215" src="http://www.cameobbrome.com/wp-content/uploads/2017/03/coffee.jpg"></ion-img>
+
+  <ion-row>
+    <ion-col width-50>
+      <button ion-button primary block>Izquierdo</button>
+    </ion-col>
+    <ion-col width-50>
+      <button ion-button primary block>Derecho</button>
+    </ion-col>
+  </ion-row>
+
   <button ion-button color="primary" (click)="logout()">Logout</button>
 </ion-content>
