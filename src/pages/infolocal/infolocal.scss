@@ -1,0 +1,19 @@
+page-infolocal {
+
+    .img-responsive {
+        width:auto !important;
+        height:30px !important;
+    }
+    .item-input {
+        background-color: transparent;
+    }
+    .grid-basic-page {
+
+        ion-col div {
+          border: none;
+          border-radius: none;
+          padding: none;
+          text-align: center;
+        }
+    }
+}

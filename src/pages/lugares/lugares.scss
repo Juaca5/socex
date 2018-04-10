@@ -1,0 +1,16 @@
+page-lugares {
+
+    .img-responsive {
+        width:auto !important;
+        height:30px !important;
+    }
+    .item-input {
+        background-color: transparent;
+    }
+    
+    #map_canvas{
+        display: block;
+        height: 30%;
+        width: 30%;
+    }
+}

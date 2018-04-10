@@ -1,0 +1,70 @@
+<!--
+  Generated template for the InfolocalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="grid-basic-page">
+
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+                <button ion-button outline >+info<br/>Local</button>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+                <img src="assets/imgs/logo_sin_fondo.png" class="img-responsive" />
+                <ion-label>Completa los datos <br/>para tu amigo</ion-label>
+                
+                <ion-list>
+
+                    <ion-item>
+                      <ion-label stacked>Nombre</ion-label>
+                      <ion-input type="text"></ion-input>
+                    </ion-item>
+                  
+                    <ion-item>
+                      <ion-label stacked>Apellido</ion-label>
+                      <ion-input type="text"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label stacked>Rut</ion-label>
+                        <ion-input type="text"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <button ion-button block ion-button style="width:100px;height:20px;">Enviar</button>
+
+                    </ion-item>
+                  
+                  </ion-list>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+                <button ion-button outline >seleccione<br/>
+                  otro local</button>
+            </div>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-segment padding [(ngModel)]="mymodel" ion-text >
+        <ion-segment-button value="pending">Pendientes</ion-segment-button>
+        <ion-segment-button value="acepted">Aceptados</ion-segment-button>
+        <ion-segment-button value="notacepted">No aceptados</ion-segment-button>
+    </ion-segment>
+
+</ion-content>
