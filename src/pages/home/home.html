@@ -5,22 +5,33 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
 
-  <h2 text-center>Welcome to Juan</h2>
+<ion-content style="padding: 0px">
+  <ion-grid style="padding: 0px">
+    <ion-row>
+      <div style="width: 100%; text-align: center; background: #888888; padding: 30px 10px;">
+        <h2 >Bienvenido Juan</h2>
+        <button ion-button outline text-wrap (click)="gotoNotification()">Tienes 6 notificaiones</button>
+      </div>
+    </ion-row>
 
-  <button ion-button round full>Tienes 3 notificaiones</button>
+    <ion-row>
+      <ion-img center style="width: 100%;" src="http://www.cameobbrome.com/wp-content/uploads/2017/03/coffee.jpg"></ion-img>
+    </ion-row>
 
-  <ion-img center width="340" height="215" src="http://www.cameobbrome.com/wp-content/uploads/2017/03/coffee.jpg"></ion-img>
+    <ion-row padding>
+      <ion-col col-6>
+        <button ion-button primary large block text-wrap padding>Atención al cliente</button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button primary large block text-wrap padding>Conecta con tus amigo</button>
+      </ion-col>
+    </ion-row>
 
-  <ion-row>
-    <ion-col width-50>
-      <button ion-button primary block>Izquierdo</button>
-    </ion-col>
-    <ion-col width-50>
-      <button ion-button primary block>Derecho</button>
-    </ion-col>
-  </ion-row>
-
-  <button ion-button color="primary" (click)="logout()">Logout</button>
+    <ion-row padding>
+      <ion-col col-12>
+        <button ion-button primary block outline text-wrap color="primary" (click)="logout()">Cerrar Sesión</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -12,6 +12,36 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+		  <ion-item>
+		  	<ion-label>
+		  		Seleccionar Todas
+			</ion-label>
+		  	<ion-checkbox color="primary" [(ngModel)]="deleteAll" item-start></ion-checkbox>
+		  </ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <button (click)="dimissNotifications(false)" ion-button block text-wrap>Descartar</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
+  	<ion-list>
+    	<ion-list-header>Notificaciones</ion-list-header>
+
+		  <ion-item *ngFor="let n of notifications">
+		  	<ion-label>
+			  	<h2>{{n.user}}</h2>
+		    	<p text-wrap>{{n.message}}<br><ion-icon name="time"></ion-icon> {{n.time}}</p>
+  			</ion-label>
+	   	 	<ion-checkbox color="primary" [(ngModel)]="n.isChecked" item-start></ion-checkbox>		    
+        <ion-avatar item-start>
+          <img src="assets/imgs/user.png">
+        </ion-avatar>
+		  </ion-item>
+
+	</ion-list>
 </ion-content>

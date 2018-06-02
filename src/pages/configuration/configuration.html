@@ -12,6 +12,54 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="outer-content">
+  
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <img style="width: 120px; height: 120px;" src="assets/imgs/user.png">
+      </ion-avatar>
+      <h2>Juan Carlos Tapia</h2>
+      <p>juan.tapia.rojo@gmail.com</p>
+    </ion-item>
+  </ion-list>
 
+  <ion-list>
+    <ion-list-header>
+      Cuenta de usuario
+    </ion-list-header>
+    <ion-item>
+	  <ion-label fixed>Rut:</ion-label>
+	  <ion-input type="text"></ion-input>
+	</ion-item>
+    <ion-item>
+	  <ion-label fixed>Email:</ion-label>
+	  <ion-input type="text"></ion-input>
+	</ion-item>
+    <ion-item>
+	  <ion-label fixed>Teléfono:</ion-label>
+	  <ion-input type="text"></ion-input>
+	</ion-item>
+
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Notificaciones
+    </ion-list-header>
+    <ion-item>
+	  <ion-label>Enviar notificaciones a Email</ion-label>
+	  <ion-checkbox color="primary" item-end></ion-checkbox>
+	</ion-item>
+    <ion-item>
+	  <ion-label fixed>Contraseña:</ion-label>
+	  <ion-input type="password"></ion-input>
+	</ion-item>
+  </ion-list>
+
+  <ion-list>
+	<ion-item>
+  		<button (click)="logout()" ion-button outline block text-wrap>Cerrar Sesión</button>
+	</ion-item>
+  </ion-list>
 </ion-content>

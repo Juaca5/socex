@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
+import { NotificationPage } from '../notification/notification';
 
 
 @Component({
@@ -17,5 +18,10 @@ export class HomePage {
     const root = this.app.getRootNav();
     root.popToRoot();
   }
+
+  gotoNotification(){
+   this.navCtrl.push(NotificationPage);
+  }
+
 
 }

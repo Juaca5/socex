@@ -1,20 +1,19 @@
 page-welcome {
     #welcome{
         background: color($colors, secondary);
-        
+        padding-top: 100px;
+
         h1{
             font-size: 52px;
-            margin-top:50px
+            margin:10px 0px 100px 0px;
         }
         .marginTop{
-            margin-top:150px;
+            margin-top:30px;
         }
         .logo{
+            margin-top: 100px;
             height: 100px;
         }
-    }
-    .product .img-responsive {
-        margin: 0 auto;
     }
     
 }
