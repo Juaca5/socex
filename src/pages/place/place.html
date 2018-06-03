@@ -9,60 +9,103 @@
     <img src="assets/imgs/logosocex.png" class="navbarLogo" />
     <ion-title></ion-title>
   </ion-navbar>
+  <ion-toolbar no-border-top [hidden]="selectedLocal">
+    <ion-searchbar color="primary"
+                   [(ngModel)]="queryText"
+                   (ionInput)="updateLocales()"
+                   placeholder="Buscar">
+    </ion-searchbar>
+  </ion-toolbar>
+  <div #mapCanvas id="map_canvas" [hidden]="selectedLocal"></div>
 </ion-header>
 
-<ion-tabs tabbarPlacement=“top” primary>
-  <ion-tab tabIcon=“card” tabTitle=“Questions”></ion-tab>
-  <ion-tab tabIcon=“stats” tabTitle=“Statistics” ></ion-tab>
-  <ion-tab tabIcon=“settings” tabTitle=“Settings” ></ion-tab>
-</ion-tabs>
-
-
-<ion-content>
-
-  <ion-list>
-    <ion-item>
-        <ion-thumbnail item-start>
-          <img width="50%" height="50%" src="assets/imgs/logo_sin_fondo.png">
-        </ion-thumbnail>
-        <button ion-button clear >3500</button>
-        <button ion-button >invitar</button>
-        <button ion-button clear >10 + 10</button>
-      </ion-item>
-      <ion-item>
-          <ion-thumbnail item-start>
-            <img width="50%" height="50%" src="assets/imgs/logo_sin_fondo.png">
+<ion-content [hidden]="selectedLocal" padding>
+    <ion-list>
+      <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
+          <ion-thumbnail (click)="LocalDetails(l)" item-start>
+            <img style="width: 100px;height: auto;" src="{{l.logo}}">
           </ion-thumbnail>
-          <button ion-button clear >3500</button>
-          <button ion-button >invitar</button>
-          <button ion-button clear >10 + 10</button>
-        </ion-item>
-        <ion-item>
-            <ion-thumbnail item-start>
-              <img width="50%" height="50%" src="assets/imgs/logo_sin_fondo.png">
-            </ion-thumbnail>
-            <button ion-button clear >3500</button>
-            <button ion-button >invitar</button>
-            <button ion-button clear >10 + 10</button>
-          </ion-item>
-          <ion-item>
-              <ion-thumbnail item-start>
-                <img width="50%" height="50%" src="assets/imgs/logo_sin_fondo.png">
-              </ion-thumbnail>
-              <button ion-button clear >3500</button>
-              <button ion-button >invitar</button>
-              <button ion-button clear >10 + 10</button>
-            </ion-item>
-            <ion-item>
-                <ion-thumbnail item-start>
-                  <img width="50%" height="50%" src="assets/imgs/logo_sin_fondo.png">
-                </ion-thumbnail>
-                <button ion-button clear >3500</button>
-                <button ion-button >invitar</button>
-                <button ion-button clear >10 + 10</button>
-              </ion-item>
-              
-  </ion-list>
-
+          <button ion-button clear >{{l.puntos}}</button>
+          <button ion-button (click)="Invite(l)">invitar</button>
+          <button ion-button clear >{{l.suma}}</button>
+      </ion-item>              
+    </ion-list>
 </ion-content>
 
+<ion-content [hidden]="!selectedLocal" class="localDetail" padding>
+  <ion-card>
+    <img src="{{selectedLocal?.logo}}"/>
+    <ion-card-content  style="border: 1px solid #ccc; border-right: none; border-left: none;">
+        <h3 style="text-align: center;">Información</h3>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6>
+              Teléfono: <br>
+            </ion-col>
+            <ion-col col-6>
+              +569 9 87612544
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              Página web:
+            </ion-col>
+            <ion-col col-6>
+              www.{{selectedLocal?.name}}.cl
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              Nombre encargado:
+            </ion-col>
+            <ion-col col-6>
+              Alexis Reyes
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              Vigencia de puntos:
+            </ion-col>
+            <ion-col col-6>
+              6 meses
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              Máximo descuento: 
+            </ion-col>
+            <ion-col col-6>
+              Hasta un 40%
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              Desc. en 1ra venta:
+            </ion-col>
+            <ion-col col-6>
+              Hasta un 40%
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card-content>
+
+
+      <h3 style="text-align: center;">Horario de atención</h3>
+      <ion-grid style="text-align: center;">
+          <ion-row>
+            <ion-col col-12>
+              Desde 09:00 a 23:00
+            </ion-col>
+          </ion-row>
+
+        <ion-row style="padding: 10px 0px 20px 0px;">
+          <ion-col class="dayCol" *ngFor="let d of days" class="dayTitle" no-padding>
+            {{d}}<br>
+            <ion-icon color="success" class="dayIcon" name="checkmark-circle"></ion-icon>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+  </ion-card>
+</ion-content>

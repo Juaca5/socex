@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-
 import { HomePage } from '../home/home';
 import { PlacePage } from '../place/place';
 import { NotificationPage } from '../notification/notification';
@@ -19,9 +16,6 @@ export class TabsPage {
   noty = NotificationPage;
   config = ConfigurationPage;
   
-  about = AboutPage;
-  contact = ContactPage;
-
   constructor() {
 
   }

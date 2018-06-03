@@ -30,7 +30,8 @@ $colors: (
   light:      	#f4f4f4,
   dark:       	#222,
   notificationcircle: #bd68cb,
-  energy:      	#f2b632
+  energy:      	#f2b632,
+  success:		#3bc359
 );
 
 $toolbar-background: color($colors, primary);

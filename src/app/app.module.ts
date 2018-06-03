@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -6,7 +7,7 @@ import { MyApp } from './app.component';
 import { Welcome } from '../pages/welcome/welcome';
 import { Login } from '../pages/login/login';
 import { Signup } from '../pages/signup/signup';
-import { AboutPage } from '../pages/about/about';
+import { ConfirmationPage } from '../pages/confirmation/confirmation';
 import { ContactPage } from '../pages/contact/contact';
 
 import { HomePage } from '../pages/home/home';
@@ -19,23 +20,31 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { FilterLocalesrPipe } from '../pages/place/place'; 
+import { LocalesData } from '../providers/locales-data';
+import { UserData } from '../providers/user-data';
+
 @NgModule({
   declarations: [
     MyApp,
     Welcome,
     Login,
     Signup,
-    AboutPage,
+    ConfirmationPage,
     ContactPage,
     HomePage,
     PlacePage,
     NotificationPage,
     ConfigurationPage,
-    TabsPage
+    TabsPage,
+    FilterLocalesrPipe
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +52,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Welcome,
     Login,
     Signup,
-    AboutPage,
+    ConfirmationPage,
     ContactPage,
     HomePage,
     PlacePage,
@@ -54,6 +63,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalesData,
+    UserData,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

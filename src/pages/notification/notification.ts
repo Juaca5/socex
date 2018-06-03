@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class NotificationPage {
   notifications: Array<{user: string,message: string, time: string, isChecked: boolean}> = [];
   deleteAll: Boolean = false;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

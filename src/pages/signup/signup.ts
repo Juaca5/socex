@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
+import { ConfirmationPage } from '../confirmation/confirmation';
 
 /**
  * Generated class for the Signup page.
@@ -22,9 +22,8 @@ export class Signup {
     console.log('ionViewDidLoad Signup');
   }
 
-  signup(){
-  //Api connections
-  this.navCtrl.push(TabsPage);
+  confirm(){
+    this.navCtrl.push(ConfirmationPage);
   }
 
 }

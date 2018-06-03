@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 import { NotificationPage } from '../notification/notification';
+import { ContactPage } from '../contact/contact';
 
 
 @Component({
@@ -21,6 +22,11 @@ export class HomePage {
 
   gotoNotification(){
    this.navCtrl.push(NotificationPage);
+  }
+
+  Invite(){
+    this.navCtrl.push(ContactPage, {
+    });
   }
 
 

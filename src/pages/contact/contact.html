@@ -1,16 +1,39 @@
 <ion-header>
   <ion-navbar>
-    <img ion-right src="assets/imgs/bananalogo.png" class="navbarLogo" />
-    <ion-title>Contact</ion-title>
+    <ion-title>Invitar</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+  <ion-card [hidden]="!selectedLocal" padding>
+    <img src="{{selectedLocal?.logo}}"/>
+  </ion-card>
+  
+  <ion-list padding>
     <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+      <ion-label fixed>Nombre</ion-label>
+      <ion-input type="text" value=""></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Rut</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Contraseña</ion-label>
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+    </ion-item>
+
+    <button ion-button block color="primary" (click)="backToPlace()">Invitar amigo</button>
+
   </ion-list>
 </ion-content>
