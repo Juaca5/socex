@@ -1,4 +1,10 @@
 page-place {
+
+    .img-responsive {
+        width:auto !important;
+        height:30px !important;
+    }
+    
     img {
         max-width: 100%;
         height: auto;
