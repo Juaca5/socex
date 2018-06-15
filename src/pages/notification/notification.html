@@ -5,26 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <img src="assets/imgs/logosocex.png" class="navbarLogo" />
-    <ion-title></ion-title>
-  </ion-navbar>
-</ion-header>
-
+	<ion-navbar hideBackButton="true">
+	  <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
+	</ion-navbar>
+  </ion-header>
 
 <ion-content>
     <ion-grid>
       <ion-row>
         <ion-col col-6>
 		  <ion-item>
-		  	<ion-label>
-		  		Seleccionar Todas
-			</ion-label>
 		  	<ion-checkbox color="primary" [(ngModel)]="deleteAll" item-start></ion-checkbox>
+        <button (click)="checkNotifications()" ion-button block text-wrap><ion-icon name="mail-open"></ion-icon></button>
+        <button (click)="dimissNotifications(false)" ion-button block text-wrap><ion-icon name="trash"></ion-icon></button>
 		  </ion-item>
         </ion-col>
         <ion-col col-6>
-          <button (click)="dimissNotifications(false)" ion-button block text-wrap>Descartar</button>
         </ion-col>
       </ion-row>
     </ion-grid>

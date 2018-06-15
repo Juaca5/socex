@@ -26,45 +26,59 @@ export class NotificationPage {
   		user: 'Alexis Reyes',
   		message: 'Aceptó tu solicitud en Fellini', 
   		time: 'hace 45 minutos', 
+      viewed: false,
   		isChecked: false
   	    },{
   		user: 'Alejandro Medina',
   		message: 'Aceptó tu solicitud en Café Café', 
   		time: 'hace 3 horas', 
+      viewed: false,
   		isChecked: false
   	    },{
   		user: 'Juan Carlos Tapia',
   		message: 'Usaste 40 puntos en Fellini', 
   		time: 'hace 1 día', 
+      viewed: false,
   		isChecked: false
   	    },{
   		user: 'Sebastián Piñera',
   		message: 'Usó 25.000 puntos en Starbuks', 
   		time: 'hace 7 horas', 
+      viewed: false,
   		isChecked: false
   	    },{
   		user: 'Pedro Hernández',
   		message: 'Aceptó tu solicitud en Marco Polo', 
   		time: 'hace 1 día', 
+      viewed: false,
   		isChecked: false
   	    },{
   		user: 'Esteban Paredes',
   		message: 'Usó 250 puntos en Fellini', 
   		time: 'hace 1 día', 
+      viewed: false,
   		isChecked: false
   	}];
   }
 
   dimissNotifications(){
   	if (this.deleteAll) {
-  		this.notifications = [];
-	}else{
-	  	for (var i = this.notifications.length - 1; i >= 0; i--) {
-	  		if(this.notifications[i].isChecked){
-	  			this.notifications.splice(i, 1);
-	  		}
-	  	}
-	}
+    		this.notifications = [];
+  	}else{
+  	  	for (var i = this.notifications.length - 1; i >= 0; i--) {
+  	  		if(this.notifications[i].isChecked){
+  	  			this.notifications.splice(i, 1);
+  	  		}
+  	  	}
+  	}
+  }
+
+  checkNotifications(){
+      for (var i = this.notifications.length - 1; i >= 0; i--) {
+        if(this.notifications[i].isChecked){
+          this.notifications.viewed = true;
+        }
+      }
   }
 
 }

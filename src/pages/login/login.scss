@@ -1,4 +1,10 @@
 page-login {
+
+    .img-responsive {
+        width:auto !important;
+        height:30px !important;
+    }
+
 	ion-content{
 		margin-top: calc(50% - 50px);
 	}
