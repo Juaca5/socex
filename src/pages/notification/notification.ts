@@ -34,7 +34,7 @@ export class NotificationPage {
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean}> = [];
-  deleteAll: Boolean = false;
+  deleteAll: boolean = false;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {  }
 
