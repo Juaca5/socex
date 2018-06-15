@@ -4,17 +4,15 @@
 	</ion-navbar>
   </ion-header>
 
-<ion-content padding>
+<ion-content padding class="mountain_background">
+  <div class="emptyBlock"></div>
   <ion-list>
-
     <ion-item>
-      <ion-label fixed>Rut</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input placeholder="Ingresa tu Rut" class="white-input" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label fixed>Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input placeholder="Ingresa tu Contraseña" class="white-input" type="password"></ion-input>
     </ion-item>
 
     <button ion-button block color="primary" (click)="login()">Iniciar Sesión</button>

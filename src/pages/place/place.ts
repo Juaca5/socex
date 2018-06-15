@@ -6,38 +6,38 @@ import { LocalesData } from '../../providers/locales-data';
 
 declare var google: any;
 
-/**
- * Generated class for the PlacePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 @Pipe({  
     name: 'filterLocales',  
     pure: false  
 })  
 export class FilterLocalesrPipe implements PipeTransform {  
     transform(items: any[], filter: any): any {  
-    	var name = filter.name.toLowerCase();
+      var name = filter.name.toLowerCase();
         if (!items || !filter) {  
             return [];  
         }  
         return items.filter(item => (
-        	item.name.toLowerCase().indexOf(name) >= 0
-       	));  
+          item.name.toLowerCase().indexOf(name) >= 0
+        ));  
     }  
 }  
 
+/**
+ * Generated class for the PlacePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 @IonicPage()
 @Component({
   selector: 'page-place',
   templateUrl: 'place.html',
 })
+
 export class PlacePage {
-  view: string = 'Mapa';
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
-  allLocales: Array<{name: string, logo: string, puntos: Number, suma: string, location: string}> = [];
+  allLocales: Array<any> = [];
   selectedLocal: any = undefined;
   days: any = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 
@@ -161,7 +161,10 @@ export class PlacePage {
             zoom: 16
           });
 
+          this.allLocales = mapData;
+
           mapData.forEach((markerData: any) => {
+
             let infoWindow = new google.maps.InfoWindow({
               content: `<h5>${markerData.name}</h5>`
             });

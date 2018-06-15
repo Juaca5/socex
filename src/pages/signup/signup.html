@@ -4,30 +4,27 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-<ion-list>
+<ion-content padding class="mountain_background">
+  <div class="emptyBlock"></div>
+  
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Nombre" class="white-input" type="text"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Nombre</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input placeholder="Email" class="white-input" type="mail"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Email</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input placeholder="Rut" class="white-input" type="text"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Rut</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input placeholder="Contraseña" class="white-input" type="password"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label fixed>Contraseña</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
+    <button ion-button block color="primary" (click)="confirm()">Crear Cuenta</button>
+  </ion-list>
 
-  <button ion-button block color="primary" (click)="confirm()">Crear Cuenta</button>
-
-</ion-list>
 </ion-content>

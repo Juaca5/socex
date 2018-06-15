@@ -15,4 +15,22 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.mountain_background{
+	background:		 url(../assets/imgs/fondo_2.jpg) no-repeat center;
+	background-size: cover;	
+}
 
+.ontoolbar{
+	background-color: #403f44;
+	color: #fff;
+	border: none;
+}
+
+.white-input,
+.white-input::-moz-placeholder,
+.white-input:-ms-input-placeholder,
+.white-input::-webkit-input-placeholder {
+  color: #fff!important;
+  opacity: 1;
+  text-align: center;
+}

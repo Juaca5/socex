@@ -5,4 +5,20 @@ page-notification {
         height:30px !important;
     }
 
+    .item-inner {
+    	border-bottom: none!important;
+    }
+
+    .checkbox-md + .item-inner ion-label {
+    	padding: 0px!important;
+    	margin: 0px!important;
+	}
+
+	.readButton{
+		background-color: #5494f5;
+	}
+	.trashButton{
+		background-color: #fc1054;
+	}
+
 }

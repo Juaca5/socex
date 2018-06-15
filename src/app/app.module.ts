@@ -21,6 +21,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { FilterNotificationsPipe } from '../pages/notification/notification'; 
 import { FilterLocalesrPipe } from '../pages/place/place'; 
 import { LocalesData } from '../providers/locales-data';
 import { UserData } from '../providers/user-data';
@@ -38,7 +39,8 @@ import { UserData } from '../providers/user-data';
     NotificationPage,
     ConfigurationPage,
     TabsPage,
-    FilterLocalesrPipe
+    FilterLocalesrPipe,
+    FilterNotificationsPipe
   ],
   imports: [
     BrowserModule,
