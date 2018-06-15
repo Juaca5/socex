@@ -7,7 +7,8 @@
 <ion-header>
   <ion-navbar hideBackButton="true">
 	  <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
-  </ion-navbar>
+	</ion-navbar>
+  
   <ion-toolbar no-border-top [hidden]="selectedLocal">
     <ion-searchbar color="primary"
                    [(ngModel)]="queryText"
@@ -15,24 +16,10 @@
                    placeholder="Buscar">
     </ion-searchbar>
   </ion-toolbar>
-
-<!-- Segment buttons with icons -->
-  <ion-segment [hidden]="selectedLocal" [(ngModel)]="OnMap" color="secondary">
-    <ion-segment-button value='0' class="font_segment">
-      Mapa
-    </ion-segment-button>
-    <ion-segment-button value='1' class="font_segment">
-      Lista
-    </ion-segment-button>
-  </ion-segment>
-
+  <div #mapCanvas id="map_canvas" [hidden]="selectedLocal"></div>
 </ion-header>
 
-<ion-content [hidden]="selectedLocal">
-
-    <div #mapCanvas id="map_canvas" [hidden]="OnMap == 1"></div>
-
-
+<ion-content [hidden]="selectedLocal" padding>
     <ion-list>
       <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
           <ion-thumbnail (click)="LocalDetails(l)" item-start>
@@ -45,10 +32,7 @@
     </ion-list>
 </ion-content>
 
-
-
-
-<ion-content [hidden]="!selectedLocal" class="localDetail" padding>
+<ion-content [hidden]="!selectedLocal" class="localDetail">
   <ion-card>
     <img src="{{selectedLocal?.logo}}"/>
     <ion-card-content  style="border: 1px solid #ccc; border-right: none; border-left: none;">

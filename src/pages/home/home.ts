@@ -21,7 +21,7 @@ export class HomePage {
   }
 
   gotoNotification(){
-   this.navCtrl.push(NotificationPage);
+    this.navCtrl.push(NotificationPage);
   }
 
   Invite(){

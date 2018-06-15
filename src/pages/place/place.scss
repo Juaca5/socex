@@ -47,8 +47,9 @@ page-place {
         width: calc(100%/7);
     }
 
-    .localDetail .scroll-content{
-        background-color: #677077!important;
+    ion-card{
+        width: 100%!important;
+        margin: 0px!important;
     }
     ion-card img {
         padding: 10px;

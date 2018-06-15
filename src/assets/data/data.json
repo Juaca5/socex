@@ -328,14 +328,18 @@
 
 
   "map": [{
-    "name": "Monona Terrace Convention Center",
+    "name": "Fillini",
     "lat": 43.071584,
     "lng": -89.380120,
-    "center": true
+    "center": true,    
   }, {
-    "name": "Ionic HQ",
+    "name": "Starbucks",
     "lat": 43.074395,
-    "lng": -89.381056
+    "lng": -89.381056,
+    "dir": "5 norte, Viña del Mar",
+    "logo": "assets/imgs/logo_sin_fondo.png", 
+    "suma": "10 + 10",
+    "puntos": 3000
   }, {
     "name": "Afterparty - Brocach Irish Pub",
     "lat": 43.07336,
