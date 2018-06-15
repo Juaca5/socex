@@ -9,12 +9,15 @@ page-place {
         max-width: 100%;
         height: auto;
     }
+    .font_segment{
+        
+        font-size: 1.0em !important; 
+    }
     .segment-button{
     	background-color: #ffffff!important;
     	color: #222222!important;
     	opacity: 1!important;
     	border-color: #ccc!important;
-    	font-size: 20px!important;
     	font-weight: 200;
     }
     .segment-button.activated, .segment-activated{
