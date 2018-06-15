@@ -34,7 +34,8 @@ export class FilterLocalesrPipe implements PipeTransform {
   templateUrl: 'place.html',
 })
 export class PlacePage {
-  view: string = 'Mapa';
+
+  OnMap: string = 'map'; 
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   allLocales: Array<{name: string, logo: string, puntos: Number, suma: string, location: string}> = [];
