@@ -161,7 +161,7 @@ export class PlacePage {
             zoom: 16
           });
 
-          this.allLocales = mapData;
+          //this.allLocales = mapData;
 
           mapData.forEach((markerData: any) => {
 

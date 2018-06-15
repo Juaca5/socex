@@ -16,8 +16,21 @@
                    placeholder="Buscar">
     </ion-searchbar>
   </ion-toolbar>
-  <div #mapCanvas id="map_canvas" [hidden]="selectedLocal"></div>
+<!-- Segment buttons with icons -->
+<ion-segment [hidden]="selectedLocal" [(ngModel)]="OnMap" color="secondary">
+    <ion-segment-button value='0' class="font_segment">
+      Mapa
+    </ion-segment-button>
+    <ion-segment-button value='1' class="font_segment">
+      Lista
+    </ion-segment-button>
+  </ion-segment>
+
 </ion-header>
+
+<ion-content [hidden]="selectedLocal">
+
+    <div #mapCanvas id="map_canvas" [hidden]="OnMap == 1"></div>
 
 <ion-content [hidden]="selectedLocal" padding>
     <ion-list>
