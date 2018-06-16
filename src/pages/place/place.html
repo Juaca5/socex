@@ -2,9 +2,9 @@
   Generated template for the PlacePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+  Ionic pages and navigation. 
 -->
-<ion-header>
+<ion-header >
   <ion-navbar hideBackButton="true">
 	  <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
 	</ion-navbar>
@@ -16,8 +16,8 @@
                    placeholder="Buscar">
     </ion-searchbar>
   </ion-toolbar>
-<!-- Segment buttons with icons -->
-<ion-segment [hidden]="selectedLocal" [(ngModel)]="OnMap" color="secondary">
+  <!-- Segment buttons with icons -->
+  <ion-segment [hidden]="selectedLocal" [(ngModel)]="OnMap" color="secondary">
     <ion-segment-button value='0' class="font_segment">
       Mapa
     </ion-segment-button>
@@ -28,21 +28,21 @@
 
 </ion-header>
 
-<ion-content [hidden]="selectedLocal">
 
-    <div #mapCanvas id="map_canvas" [hidden]="OnMap == 1"></div>
-
-<ion-content [hidden]="selectedLocal" padding>
-    <ion-list>
-      <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
-          <ion-thumbnail (click)="LocalDetails(l)" item-start>
-            <img style="width: 100px;height: auto;" src="{{l.logo}}">
-          </ion-thumbnail>
-          <button ion-button clear >{{l.puntos}}</button>
-          <button ion-button (click)="Invite(l)">invitar</button>
-          <button ion-button clear >{{l.suma}}</button>
-      </ion-item>              
-    </ion-list>
+<ion-content [hidden]="selectedLocal" id="localesList">
+  <div id="map_canvas" [hidden]="OnMap == 1" #mapCanvas  ion-fixed></div>
+  <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}" padding>
+      <ion-list>
+        <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
+            <ion-thumbnail (click)="LocalDetails(l)" item-start>
+              <img style="width: 100px;height: auto;" src="{{l.logo}}">
+            </ion-thumbnail>
+            <button ion-button clear >{{l.puntos}}</button>
+            <button ion-button (click)="Invite(l)">invitar</button>
+            <button ion-button clear >{{l.suma}}</button>
+        </ion-item>              
+      </ion-list>
+  </div>
 </ion-content>
 
 <ion-content [hidden]="!selectedLocal" class="localDetail">

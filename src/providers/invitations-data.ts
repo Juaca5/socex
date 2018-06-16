@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 
 
 @Injectable()
-export class LocalesData {
+export class InvitationsData {
   data: any;
 
   constructor(public http: Http, public user: UserData) { }
@@ -29,19 +29,36 @@ export class LocalesData {
     return this.data;
   }
 
-  getLocales() {
+  getInvitations() {
     return this.load().map((data: any) => {
-      return data.locales.sort((a: any, b: any) => { // ordenar por nombre, se puede cambiar
-        let aName = a.name.split(' ').pop();
-        let bName = b.name.split(' ').pop();
-        return aName.localeCompare(bName);
-      });
+      return data.invitations;
     });
   }
 
-  refreshLocales() {
+  refreshInvitations() {
     this.data = undefined;
     return this.getInvitations();
   }
+
+
+
+  addInvitation(inv: any): void {
+    // insert invitación en el servidor
+    this.data.invitations.push(inv);
+  };
+
+  removeInvitation(inv: any): void {
+    inv.checked = true;
+    this.updateInvitation(inv);
+    let index = this.data.invitations.indexOf(inv);
+    if (index > -1) {
+      this.data.invitations.splice(index, 1);
+    }
+  };
+
+  updateInvitation(inv: any): void {
+    // modificar invitación en servidor
+  }
+
 
 }

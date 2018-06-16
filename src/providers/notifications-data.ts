@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 
 
 @Injectable()
-export class LocalesData {
+export class NotificationsData {
   data: any;
 
   constructor(public http: Http, public user: UserData) { }
@@ -29,19 +29,38 @@ export class LocalesData {
     return this.data;
   }
 
-  getLocales() {
+  getNotifications() {
     return this.load().map((data: any) => {
-      return data.locales.sort((a: any, b: any) => { // ordenar por nombre, se puede cambiar
-        let aName = a.name.split(' ').pop();
-        let bName = b.name.split(' ').pop();
-        return aName.localeCompare(bName);
-      });
+      return data.notifications;
     });
   }
 
-  refreshLocales() {
+  refreshNotifications() {
     this.data = undefined;
-    return this.getInvitations();
+    return this.getNotifications();
   }
+
+
+
+  addNotification(inv: any): void {
+    // insert invitación en el servidor
+    this.data.notifications.push(inv);
+  };
+
+  deleteNotification(inv: any): void {
+    inv.checked = true;
+    inv.viewed = true;
+    this.updateNotification(inv);
+    let index = this.data.notifications.indexOf(inv);
+    if (index > -1) {
+      this.data.notifications.splice(index, 1);
+    }
+  };
+
+  updateNotification(inv: any): void {
+    // modificar invitación en servidor
+    console.log('modificar Notificacion en servidor')
+  }
+
 
 }
