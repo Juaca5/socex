@@ -1,6 +1,7 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { NotificationsData } from '../../providers/notifications-data';
 
 @Pipe({  
     name: 'filterNotifications',  
@@ -31,65 +32,33 @@ export class NotificationPage {
   notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean}> = [];
   deleteAll: boolean = false;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: NotificationsData) {  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationPage');
-  	this.notifications = [{
-  		user: 'Alexis Reyes',
-  		message: 'Aceptó tu solicitud en Fellini', 
-  		time: 'hace 45 minutos', 
-      viewed: false,
-  		isChecked: false
-  	    },{
-  		user: 'Alejandro Medina',
-  		message: 'Aceptó tu solicitud en Café Café', 
-  		time: 'hace 3 horas', 
-      viewed: false,
-  		isChecked: false
-  	    },{
-  		user: 'Juan Carlos Tapia',
-  		message: 'Usaste 40 puntos en Fellini', 
-  		time: 'hace 1 día', 
-      viewed: false,
-  		isChecked: false
-  	    },{
-  		user: 'Sebastián Piñera',
-  		message: 'Usó 25.000 puntos en Starbuks', 
-  		time: 'hace 7 horas', 
-      viewed: false,
-  		isChecked: false
-  	    },{
-  		user: 'Pedro Hernández',
-  		message: 'Aceptó tu solicitud en Marco Polo', 
-  		time: 'hace 1 día', 
-      viewed: false,
-  		isChecked: false
-  	    },{
-  		user: 'Esteban Paredes',
-  		message: 'Usó 250 puntos en Fellini', 
-  		time: 'hace 1 día', 
-      viewed: false,
-  		isChecked: false
-  	}];
+    this.confData.getNotifications().subscribe((data: any) => {
+      this.notifications = data;
+      console.log('notificarions list: '+this.notifications);
+    });
   }
 
   selectAll(){
-      for (var i = this.notifications.length - 1; i >= 0; i--) {
+      for (let i = this.notifications.length - 1; i >= 0; i--) {
         this.notifications[i].isChecked = this.deleteAll;
       }
   }
 
   dimissNotifications(){
-    	for (var i = this.notifications.length - 1; i >= 0; i--) {
+    	for (let i = this.notifications.length - 1; i >= 0; i--) {
     		if(this.notifications[i].isChecked){
-    			this.notifications.splice(i, 1);
+          this.confData.deleteNotification(this.notifications[i]);
+    			//this.notifications.splice(i, 1);
     		}
     	}
   }
 
   checkNotifications(){
-      for (var i = this.notifications.length - 1; i >= 0; i--) {
+      for (let i = this.notifications.length - 1; i >= 0; i--) {
         if(this.notifications[i].isChecked){
           this.notifications[i].viewed = true;
         }

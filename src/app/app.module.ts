@@ -21,10 +21,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { IonicStorageModule } from '@ionic/storage';
 import { FilterNotificationsPipe } from '../pages/notification/notification'; 
 import { FilterLocalesrPipe } from '../pages/place/place'; 
+import { NotificationsData } from '../providers/notifications-data';
+import { InvitationsData } from '../providers/invitations-data';
 import { LocalesData } from '../providers/locales-data';
 import { UserData } from '../providers/user-data';
 
@@ -69,6 +70,8 @@ import { UserData } from '../providers/user-data';
   providers: [
     StatusBar,
     SplashScreen,
+    NotificationsData,
+    InvitationsData,
     LocalesData,
     UserData,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

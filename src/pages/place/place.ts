@@ -1,11 +1,12 @@
 import { Component, ViewChild, Pipe, PipeTransform, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-
 import { ContactPage } from '../contact/contact';
-import { PointsPage } from '../points/points';
+
+//import { Local, Invitation } from '../../interfaces/models';
 
 import { LocalesData } from '../../providers/locales-data';
-import { importType } from '@angular/compiler/src/output/output_ast';
+import { InvitationsData } from '../../providers/invitations-data';
+
 
 declare var google: any;
 
@@ -41,11 +42,14 @@ export class PlacePage {
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   allLocales: Array<any> = [];
+  invitations: Array<any> = [];
   selectedLocal: any = undefined;
-  days: any = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
+  days: any = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+  OnMap = '0';
+
 
   @ViewChild('mapCanvas') mapElement: ElementRef;
-	constructor(public confData: LocalesData, public platform: Platform, public navCtrl: NavController, public navParams: NavParams) {
+	constructor(public localsData: LocalesData, public invData: InvitationsData, public platform: Platform, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -53,119 +57,21 @@ export class PlacePage {
     this.selectedLocal = this.navParams.get('local');
 
 
-      console.log(this.selectedLocal);
       if (this.selectedLocal){
         this.selectedLocal = this.navParams.get('local');
-        console.log('local details');
-      }else{
-        console.log('locales list');
-        this.allLocales = [{
-      name: 'Fellini',
-      logo: 'assets/imgs/logo_sin_fondo.png', 
-      suma: '10 + 10',
-      location: '',
-      puntos: 3000
-        },{
-      name: 'Piccola italia',
-      logo: 'assets/imgs/locales/piccola_italia.png', 
-      suma: '10 + 15',
-      location: '',
-      puntos: 4500 
-        },{
-      name: 'Starbucks',
-      logo: 'assets/imgs/locales/starbucks.jpg', 
-      suma: '15 + 10',
-      location: '',
-      puntos: 3000 
-        },{
-      name: 'Italissimo',
-      logo: 'assets/imgs/locales/italissimo.png', 
-      suma: '15 + 15',
-      location: '',
-      puntos: 5000 
-        },{
-      name: 'Fellini',
-      logo: 'assets/imgs/logo_sin_fondo.png', 
-      suma: '10 + 10',
-      location: '',
-      puntos: 3000
-        },{
-      name: 'Piccola italia',
-      logo: 'assets/imgs/locales/piccola_italia.png', 
-      suma: '10 + 15',
-      location: '',
-      puntos: 4500 
-        },{
-      name: 'Starbucks',
-      logo: 'assets/imgs/locales/starbucks.jpg', 
-      suma: '15 + 10',
-      location: '',
-      puntos: 3000 
-        },{
-      name: 'Italissimo',
-      logo: 'assets/imgs/locales/italissimo.png', 
-      suma: '15 + 15',
-      location: '',
-      puntos: 5000 
-        },{
-      name: 'Fellini',
-      logo: 'assets/imgs/logo_sin_fondo.png', 
-      suma: '10 + 10',
-      location: '',
-      puntos: 3000
-        },{
-      name: 'Piccola italia',
-      logo: 'assets/imgs/locales/piccola_italia.png', 
-      suma: '10 + 15',
-      location: '',
-      puntos: 4500 
-        },{
-      name: 'Starbucks',
-      logo: 'assets/imgs/locales/starbucks.jpg', 
-      suma: '15 + 10',
-      location: '',
-      puntos: 3000 
-        },{
-      name: 'Italissimo',
-      logo: 'assets/imgs/locales/italissimo.png', 
-      suma: '15 + 15',
-      location: '',
-      puntos: 5000 
-        },{
-      name: 'Fellini',
-      logo: 'assets/imgs/logo_sin_fondo.png', 
-      suma: '10 + 10',
-      location: '',
-      puntos: 3000
-        },{
-      name: 'Piccola italia',
-      logo: 'assets/imgs/locales/piccola_italia.png', 
-      suma: '10 + 15',
-      location: '',
-      puntos: 4500 
-        },{
-      name: 'Starbucks',
-      logo: 'assets/imgs/locales/starbucks.jpg', 
-      suma: '15 + 10',
-      location: '',
-      puntos: 3000 
-        },{
-      name: 'Italissimo',
-      logo: 'assets/imgs/locales/italissimo.png', 
-      suma: '15 + 15',
-      location: '',
-      puntos: 5000 
-        }];
-        this.confData.getMap().subscribe((mapData: any) => {
-          let mapEle = this.mapElement.nativeElement;
+        console.log('local details '+this.selectedLocal);
 
+      }else{
+        this.localsData.getLocales().subscribe((mapData: any) => {
+          this.allLocales = mapData;
+          console.log('locales list: '+this.allLocales);
+
+          let mapEle = this.mapElement.nativeElement;
           let map = new google.maps.Map(mapEle, {
             center: mapData.find((d: any) => d.center),
             zoom: 16
           });
-
-          //this.allLocales = mapData;
-
+        
           mapData.forEach((markerData: any) => {
 
             let infoWindow = new google.maps.InfoWindow({
@@ -187,8 +93,12 @@ export class PlacePage {
             mapEle.classList.add('show-map');
           });
         });
-
         this.updateLocales();
+
+        this.invData.getInvitations().subscribe((data: any) => {
+          this.invitations = data;
+          console.log('invitations: '+this.invitations);
+        });
       }
 
   }
@@ -198,21 +108,22 @@ export class PlacePage {
   }
   
   LocalDetails(local){
-    this.navCtrl.push(PlacePage, {
-      local: local
-    });
+      this.navCtrl.push(PlacePage, {
+        local: local
+      });
   }
 
   Invite(local){
-    this.navCtrl.push(ContactPage,{
-      local: local
-    });
+      this.navCtrl.push(ContactPage, {
+        local: local
+      });
   }
 
-  Points(local){
-    this.navCtrl.push(ContactPage,{
-      local: local
-    });
+  LocateInMap(local){
+    if(this.OnMap == '0'){
+      console.log('locateInMap!');
+    }
   }
+
 
 }
