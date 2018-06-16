@@ -41,7 +41,7 @@ export class LocalesData {
 
   refreshLocales() {
     this.data = undefined;
-    return this.getInvitations();
+    return this.getLocales();
   }
 
 }
