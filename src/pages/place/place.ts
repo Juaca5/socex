@@ -1,8 +1,11 @@
 import { Component, ViewChild, Pipe, PipeTransform, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+
 import { ContactPage } from '../contact/contact';
+import { PointsPage } from '../points/points';
 
 import { LocalesData } from '../../providers/locales-data';
+import { importType } from '@angular/compiler/src/output/output_ast';
 
 declare var google: any;
 
@@ -201,7 +204,13 @@ export class PlacePage {
   }
 
   Invite(local){
-    this.navCtrl.push(ContactPage, {
+    this.navCtrl.push(ContactPage,{
+      local: local
+    });
+  }
+
+  Points(local){
+    this.navCtrl.push(ContactPage,{
       local: local
     });
   }

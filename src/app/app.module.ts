@@ -15,6 +15,8 @@ import { PlacePage } from '../pages/place/place';
 import { NotificationPage } from '../pages/notification/notification';
 import { ConfigurationPage } from '../pages/configuration/configuration';
 
+import { PointsPage } from '../pages/points/points';
+
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,6 +38,7 @@ import { UserData } from '../providers/user-data';
     ContactPage,
     HomePage,
     PlacePage,
+    PointsPage,
     NotificationPage,
     ConfigurationPage,
     TabsPage,
@@ -58,6 +61,7 @@ import { UserData } from '../providers/user-data';
     ContactPage,
     HomePage,
     PlacePage,
+    PointsPage,
     NotificationPage,
     ConfigurationPage,
     TabsPage
