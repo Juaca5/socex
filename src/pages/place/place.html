@@ -34,13 +34,13 @@
   <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}" padding>
       <ion-list>
         <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
-            <ion-thumbnail (click)="LocalDetails(l)" item-start>
+            <ion-thumbnail (click)="LocateInMap(l)" item-start>
               <img style="width: 100px;height: auto;" src="{{l.logo}}">
             </ion-thumbnail>
             <button ion-button clear >{{l.puntos}}</button>
             <button ion-button (click)="Invite(l)">invitar</button>
-            <button ion-button clear >{{l.suma}}</button>
-        </ion-item>              
+            <button ion-button (click)="LocalDetails(l)" clear>{{l.suma}}</button>
+        </ion-item>
       </ion-list>
   </div>
 </ion-content>

@@ -40,8 +40,6 @@ export class NotificationsData {
     return this.getNotifications();
   }
 
-
-
   addNotification(inv: any): void {
     // insert invitación en el servidor
     this.data.notifications.push(inv);

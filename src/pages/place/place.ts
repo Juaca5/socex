@@ -108,29 +108,21 @@ export class PlacePage {
   }
   
   LocalDetails(local){
-    if(this.OnMap == '0'){
-      this.locateInMap(local);
-
-    } else if(this.OnMap = '1'){
       this.navCtrl.push(PlacePage, {
         local: local
       });
-    }
   }
 
   Invite(local){
-    if(this.OnMap == '0'){
-      this.locateInMap(local);
-
-    } else if(this.OnMap = '1'){
       this.navCtrl.push(ContactPage, {
         local: local
       });
-    }
   }
 
-  locateInMap(local){
-    console.log('locateInMap!');
+  LocateInMap(local){
+    if(this.OnMap == '0'){
+      console.log('locateInMap!');
+    }
   }
 
 
