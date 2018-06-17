@@ -14,12 +14,23 @@ page-notification {
     	margin: 0px!important;
 	}
 
+
 	.readButton{
 		background-color: #5494f5;
 	}
 	.trashButton{
 		background-color: #fc1054;
 	}
+	.readButton, .trashButton{
+		margin-top: 14px!important;
+	}
+	ion-list-header{
+		background-color: #555!important;
+		color: #fff!important;
+		padding: 0px;
+		border: none!important;
+	}
+
 
 	#selectAll .checkbox-icon{
 		width: 30px!important;
@@ -42,4 +53,16 @@ page-notification {
 		}
 	}
 
+
+	.searchbar {
+		float: right;
+		width: calc(100% - 95px);
+	}
+
+	.grid, .col {
+		padding: 0px!important;
+	}
+	.ontoolbar{
+		padding: 0px 0px 0px 10px;
+	}
 }

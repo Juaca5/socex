@@ -31,7 +31,7 @@
 
 <ion-content [hidden]="selectedLocal" id="localesList">
   <div id="map_canvas" [hidden]="OnMap == 1" #mapCanvas  ion-fixed></div>
-  <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}" padding>
+  <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}">
       <ion-list>
         <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
             <ion-thumbnail (click)="LocateInMap(l)" item-start>

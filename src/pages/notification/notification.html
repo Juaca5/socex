@@ -12,21 +12,19 @@
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-        <ion-col col-6>
+        <ion-col col-12>
           <ion-item class="ontoolbar">
             <ion-checkbox id="selectAll" color="primary" [(ngModel)]="deleteAll" (ionChange)="selectAll()" item-start></ion-checkbox>
             <ion-label>
               <button (click)="checkNotifications()" ion-button small  class="readButton"><ion-icon name="mail-open"></ion-icon></button>
               <button (click)="dimissNotifications(false)" ion-button small class="trashButton"><ion-icon name="trash"></ion-icon></button>
+              <ion-searchbar color="primary"
+                             [(ngModel)]="queryText"
+                             (ionInput)="updateNotifications()"
+                             placeholder="Buscar" item-end>
+              </ion-searchbar>
             </ion-label>
           </ion-item>
-        </ion-col>
-        <ion-col col-6>
-          <ion-searchbar color="primary"
-                         [(ngModel)]="queryText"
-                         (ionInput)="updateNotifications()"
-                         placeholder="Buscar">
-          </ion-searchbar>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -35,7 +33,7 @@
 
 <ion-content>
   	<ion-list>
-    	<ion-list-header>Notificaciones</ion-list-header>
+    	<ion-list-header  [hidden]="notifications.length">No tienes notificaciones por ahora <ion-icon name="refresh" (click)="refreshNotifications()" item-end></ion-icon> </ion-list-header>
 
 		  <ion-item *ngFor="let n of notifications | filterNotifications: filter as filteredLocales">
 		  	<ion-label>
@@ -48,7 +46,7 @@
 
   			
         </ion-label>
-	   	 	<ion-checkbox color="primary" [(ngModel)]="n.isChecked" item-start></ion-checkbox>		    
+	   	 	<ion-checkbox color="primary" [(ngModel)]="n.isChecked" (ionChange)="toogleNotification(n)" item-start></ion-checkbox>		    
         <ion-avatar item-start>
           <img src="assets/imgs/user.png">
         </ion-avatar>
