@@ -24,7 +24,7 @@ export class PointsPage {
     public navParams: NavParams,
     private _HTTP: HttpClient) {
 
-      this.columns = [
+    this.columns = [
         { prop: 'Fecha' },
         { name: 'Cuenta' },
         { name: 'Pago' },
@@ -36,6 +36,7 @@ export class PointsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartolaPage');
     this.selectedLocal = this.navParams.get('local');
+    
     this._HTTP
       .get<Config>('../../assets/data/techologies.json')
       .subscribe((data) =>

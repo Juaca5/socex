@@ -8,7 +8,8 @@
   
   
   <ion-content>
-  
+
+  <ion-scroll scrollY="false">
     <ion-grid>
         <ion-row>
           <ion-col>
@@ -25,13 +26,15 @@
             </div>
           </ion-col>
         </ion-row>
-    </ion-grid>
+    </ion-grid>}
+  </ion-scroll>
+  
 
       <h6 text-center class="color_aux">Cartola de pesos</h6>
-      <h6 text-center class="color_aux">Pesos disponibles al 2/2/2222</h6>
-      <h4 text-center class="color_aux">$15.220</h4>
-  
-      <div>
+      <h6 text-center class="color_aux">Puntos disponibles al 2/2/2222</h6>
+      <h4 text-center class="color_aux">{{selectedLocal?.puntos}}</h4>
+
+    <div>
   
         <!--
            Embed the ngx-datatable component with following property bindings/values:
@@ -47,35 +50,16 @@
                            equidistant and span the width of the parent container
            8. limit - the number of records to display before paginating the results
         -->
-         <ngx-datatable
-           [sortType]="'multi'"
-           [headerHeight]="50"
-           [footerHeight]="50"
-           [rowHeight]="50"
-           [rows]="rows"
-           [columns]="columns"
-           [columnMode]="'force'"
-           >
-         </ngx-datatable>
-      </div>
-  
-        <!-- Header
-      <ion-row>
-        <ion-col>
-          <strong>Fecha</strong>
-        </ion-col>
-        <ion-col>
-          <strong>Cuenta</strong>
-        </ion-col>
-        <ion-col>
-          <strong>Pago</strong>
-        </ion-col>
-        <ion-col>
-          <strong>Pesos</strong>
-        </ion-col>
-        <ion-col>
-          <strong>Saldo</strong>
-        </ion-col>
-      </ion-row> 
-    -->
+      <ngx-datatable
+        [sortType]="'multi'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="50"
+        [rows]="rows"
+        [columns]="columns"
+        [columnMode]="'force'"
+        >
+      </ngx-datatable>
+    </div>
+
   </ion-content>
