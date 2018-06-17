@@ -2,7 +2,11 @@ import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
+
 import { MyApp } from './app.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 import { Welcome } from '../pages/welcome/welcome';
 import { Login } from '../pages/login/login';
@@ -49,6 +53,8 @@ import { UserData } from '../providers/user-data';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
+    NgxDatatableModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],

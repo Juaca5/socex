@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
-/**
- * Generated class for the PointsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+export interface Config {
+	technologies: string;
+}
 
 @IonicPage()
 @Component({
@@ -15,11 +13,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PointsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  selectedLocal: any = {};
+
+  public config : Config;
+  public columns : any;
+  public rows : any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private _HTTP: HttpClient) {
+
+      this.columns = [
+        { prop: 'Fecha' },
+        { name: 'Cuenta' },
+        { name: 'Pago' },
+        { name: 'Pesos' },
+        { name: 'Saldo' },
+      ];
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PointsPage');
+    console.log('ionViewDidLoad CartolaPage');
+    this.selectedLocal = this.navParams.get('local');
+    this._HTTP
+      .get<Config>('../../assets/data/techologies.json')
+      .subscribe((data) =>
+      {
+         this.rows = data.technologies;
+      });
   }
 
 }
