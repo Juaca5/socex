@@ -37,7 +37,7 @@
             <ion-thumbnail (click)="LocateInMap(l)" item-start>
               <img style="width: 100px;height: auto;" src="{{l.logo}}">
             </ion-thumbnail>
-            <button ion-button clear >{{l.puntos}}</button>
+            <button ion-button clear (click)="Points(l)">{{l.puntos}}</button>
             <button ion-button (click)="Invite(l)">invitar</button>
             <button ion-button (click)="LocalDetails(l)" clear>{{l.suma}}</button>
         </ion-item>
