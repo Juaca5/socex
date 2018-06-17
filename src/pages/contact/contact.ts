@@ -6,8 +6,12 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+  
 	selectedLocal: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertCtrl: AlertController) {
   }
 
 

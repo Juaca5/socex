@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 import { Login } from '../login/login';
 import { Signup } from '../signup/signup';
@@ -16,7 +17,10 @@ import { Signup } from '../signup/signup';
 })
 export class Welcome {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -29,6 +33,15 @@ export class Welcome {
 
   signup(){
    this.navCtrl.push(Signup, {}, {animate:false});
+  }
+
+  NoFuntion(){
+    let alert = this.alertCtrl.create({
+      title: 'Función no disponible',
+      subTitle: 'Esta funcionalidad aún no está disponible',
+      buttons: ['Aceptar']
+    });
+    alert.present();
   }
 
 }

@@ -6,6 +6,7 @@ import { ContactPage } from '../contact/contact';
 
 import { LocalesData } from '../../providers/locales-data';
 import { InvitationsData } from '../../providers/invitations-data';
+import { PointsPage } from '../points/points';
 
 
 declare var google: any;
@@ -117,6 +118,11 @@ export class PlacePage {
       this.navCtrl.push(ContactPage, {
         local: local
       });
+  }
+  Points(local){
+    this.navCtrl.push(PointsPage, {
+    local: local
+    });
   }
 
   LocateInMap(local){
