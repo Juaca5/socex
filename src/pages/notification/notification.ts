@@ -27,13 +27,14 @@ export class FilterNotificationsPipe implements PipeTransform {
   templateUrl: 'notification.html',
 })
 export class NotificationPage {
+
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean}> = [];
   deleteAll: boolean = false;
   deleteAllChange: boolean = false;
   notDeleteAllChange: boolean = false;
-  selectedNotifications: Number;
+  selectedNotifications: number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public confData: NotificationsData) {  }
 
