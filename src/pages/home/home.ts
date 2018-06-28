@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+
 import { NotificationPage } from '../notification/notification';
 import { ContactPage } from '../contact/contact';
 
@@ -12,7 +14,11 @@ import { NotificationsData } from '../../providers/notifications-data';
 })
 export class HomePage {
   notificationsLeft: Number = 0;
-  constructor(public navCtrl: NavController, public app: App, public notisData: NotificationsData) {
+  constructor(
+    public navCtrl: NavController, 
+    public app: App, 
+    public notisData: NotificationsData,
+    private alertCtrl: AlertController) {
   }
 
   ionViewDidEnter() {
@@ -41,6 +47,15 @@ export class HomePage {
   Invite(){
     this.navCtrl.push(ContactPage, {
     });
+  }
+
+  NoFuntion(){
+    let alert = this.alertCtrl.create({
+      title: 'Función no disponible',
+      subTitle: 'Esta funcionalidad aún no está disponible',
+      buttons: ['Aceptar']
+    });
+    alert.present();
   }
 
 
