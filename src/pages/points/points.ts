@@ -35,7 +35,6 @@ export class PointsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartolaPage');
-    console.log(this.selectedLocal.logo.toString);
     this.selectedLocal = this.navParams.get('local');
     
     this._HTTP

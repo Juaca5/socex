@@ -11,6 +11,7 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class NotificationsData {
+  
   data: any;
 
   constructor(public http: Http, public user: UserData) { }
