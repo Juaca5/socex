@@ -18,6 +18,7 @@ import { HomePage } from '../pages/home/home';
 import { PlacePage } from '../pages/place/place';
 import { NotificationPage } from '../pages/notification/notification';
 import { ConfigurationPage } from '../pages/configuration/configuration';
+import { InfolocalPage } from '../pages/infolocal/infolocal';
 
 import { PointsPage } from '../pages/points/points';
 
@@ -44,6 +45,7 @@ import { UserData } from '../providers/user-data';
     HomePage,
     PlacePage,
     PointsPage,
+    InfolocalPage,
     NotificationPage,
     ConfigurationPage,
     TabsPage,
@@ -68,6 +70,7 @@ import { UserData } from '../providers/user-data';
     ContactPage,
     HomePage,
     PlacePage,
+    InfolocalPage,
     PointsPage,
     NotificationPage,
     ConfigurationPage,

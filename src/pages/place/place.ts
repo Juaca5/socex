@@ -3,10 +3,12 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 
 //import { Local, Invitation } from '../../interfaces/models';
+import { PointsPage } from '../points/points';
+import { InfolocalPage } from '../infolocal/infolocal';
 
 import { LocalesData } from '../../providers/locales-data';
 import { InvitationsData } from '../../providers/invitations-data';
-import { PointsPage } from '../points/points';
+
 
 
 declare var google: any;
@@ -40,6 +42,7 @@ export class FilterLocalesrPipe implements PipeTransform {
 })
 
 export class PlacePage {
+  
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   allLocales: Array<any> = [];
@@ -129,6 +132,11 @@ export class PlacePage {
     if(this.OnMap == '0'){
       console.log('locateInMap!');
     }
+  }
+  InfoLocal(local){
+    this.navCtrl.push(InfolocalPage, {
+      local: local
+    });
   }
 
 
