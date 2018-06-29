@@ -23,7 +23,7 @@ export class Signup {
   }
 
   confirm(){
-    this.navCtrl.push(ConfirmationPage);
+    this.navCtrl.setRoot(ConfirmationPage);
   }
 
 }

@@ -109,19 +109,19 @@ export class PlacePage {
   }
   
   LocalDetails(local){
-      this.navCtrl.push(PlacePage, {
+      this.navCtrl.setRoot(PlacePage, {
         local: local
       });
   }
 
   Invite(local){
-      this.navCtrl.push(ContactPage, {
+      this.navCtrl.setRoot(ContactPage, {
         local: local
       });
   }
   Points(local){
-    this.navCtrl.push(PointsPage, {
-    local: local
+    this.navCtrl.setRoot(PointsPage, {
+      local: local
     });
   }
 

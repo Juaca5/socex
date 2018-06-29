@@ -29,7 +29,7 @@ export class FilterNotificationsPipe implements PipeTransform {
 export class NotificationPage {
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
-  notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean, enabled: boolean=true}> = [];
+  notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean, enabled: boolean}> = [];
   deleteAll: boolean = false;
   enabledSelectAll = true;
   notificationsEnabled = true;
@@ -91,6 +91,7 @@ export class NotificationPage {
         this.enabledSelectAll = false;
         this.deleteAll  = false;
       }
+
   }
 
 

@@ -23,7 +23,7 @@ export class Login {
 
   login(){
     //Api connections
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.setRoot(TabsPage);
     }
 
 }
