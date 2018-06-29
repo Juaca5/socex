@@ -63,20 +63,15 @@ export class NotificationPage {
       console.log('notificarions list: '+this.notifications);
     });
   }
-
-
   refreshNotifications(){
     this.confData.refreshNotifications().subscribe((data: any) => {
       this.UnselectAll();
       this.notifications = data;
     });
   }
-
-
   selectAll(){
     this.toogleAllNotification();
   }
-
   toogleAllNotification(){
     if(this.enabledSelectAll === true){
       console.log('toogleAllNotification: '+this.enabledSelectAll);
@@ -87,14 +82,10 @@ export class NotificationPage {
     }
     this.enabledSelectAll = true;
   }
-
-
   UnselectAll(){
     this.deleteAll = false;
     console.log('UnselectAll: '+this.deleteAll);
   }
-
-
   checkNotification(notification){
       let selectedNotifications = 0;
       for (let i = this.notifications.length - 1; i >= 0; i--) {
@@ -102,7 +93,6 @@ export class NotificationPage {
           selectedNotifications++;
         }
       }
-
       if(selectedNotifications == this.notifications.length){
         this.enabledSelectAll = true;
         this.deleteAll  = true;
@@ -111,8 +101,6 @@ export class NotificationPage {
         this.deleteAll  = false;
       }
   }
-
-
   toogleNotification(notification){
     //if(notification.enabled){
     if(this.notificationsEnabled && notification.enabled){
