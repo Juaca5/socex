@@ -106,7 +106,7 @@ export class NotificationPage {
       }
       this.enabledSelectAll = selectedNotifications == this.notifications.length;
       this.deleteAll  = this.enabledSelectAll;
-      console.log('one notification: '+this.notificationEnabled);
+      //console.log('one notification: '+this.notificationsEnabled);
     };
     notification.enabled == true;
   }
