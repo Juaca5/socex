@@ -42,6 +42,7 @@ export class FilterLocalesrPipe implements PipeTransform {
 })
 
 export class PlacePage {
+  
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   allLocales: Array<any> = [];
