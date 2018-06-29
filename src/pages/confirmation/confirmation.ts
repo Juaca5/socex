@@ -13,7 +13,7 @@ export class ConfirmationPage {
   }
 
   signup(){
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.setRoot(TabsPage);
   }
 
 }

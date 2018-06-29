@@ -28,11 +28,11 @@ export class Welcome {
   }
 
   login(){
-   this.navCtrl.push(Login);
+   this.navCtrl.setRoot(Login);
   }
 
   signup(){
-   this.navCtrl.push(Signup, {}, {animate:false});
+   this.navCtrl.setRoot(Signup, {}, {animate:false});
   }
 
   NoFuntion(){

@@ -16,7 +16,7 @@
           <ion-item class="ontoolbar">
             <ion-checkbox id="selectAll" color="primary" [(ngModel)]="deleteAll" (ionChange)="selectAll()" item-start></ion-checkbox>
             <ion-label>
-              <button (click)="checkNotifications()" ion-button small  class="readButton"><ion-icon name="mail-open"></ion-icon></button>
+              <button (click)="ReadNotifications()" ion-button small  class="readButton"><ion-icon name="mail-open"></ion-icon></button>
               <button (click)="dimissNotifications(false)" ion-button small class="trashButton"><ion-icon name="trash"></ion-icon></button>
               <ion-searchbar color="primary"
                              [(ngModel)]="queryText"

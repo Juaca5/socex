@@ -28,32 +28,13 @@ export class FilterNotificationsPipe implements PipeTransform {
 })
 export class NotificationPage {
   queryText: String = '';
-  filter: any = {
-    name: '', 
-    location: '', 
-    hasResult: true };
-    enabled: boolean;
-    
-    enables = true;
-
-  notifications: Array<{
-    user: string, 
-    message: string, 
-    time: string, 
-    viewed: boolean, 
-    isChecked: boolean, 
-    enabled}> = [];
-
+  filter: any = {name: '', location: '', hasResult: true};
+  notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean, enabled: boolean}> = [];
   deleteAll: boolean = false;
   enabledSelectAll = true;
   notificationsEnabled = true;
   
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public confData: NotificationsData){
-
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: NotificationsData) {  }
 
 
   ionViewDidLoad() {
@@ -100,6 +81,7 @@ export class NotificationPage {
         this.enabledSelectAll = false;
         this.deleteAll  = false;
       }
+
   }
   toogleNotification(notification){
     //if(notification.enabled){
@@ -112,7 +94,7 @@ export class NotificationPage {
       }
       this.enabledSelectAll = selectedNotifications == this.notifications.length;
       this.deleteAll  = this.enabledSelectAll;
-      console.log('one notification: '+this.notificationsEnabled);
+      //console.log('one notification: '+this.notificationsEnabled);
     };
     notification.enabled == true;
   }
