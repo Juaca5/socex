@@ -16,7 +16,7 @@
           </ion-col>
           <ion-col>
             <div>
-                <img src="assets/imgs/logo_sin_fondo.png" class="img-responsive" />
+                <img src="{{selectedLocal?.logo}}" class="img-responsive" />
             </div>
           </ion-col>
           <ion-col>
@@ -48,7 +48,7 @@
         </ion-item>
 
         <ion-item>
-            <button ion-button block ion-button style="width:100px;height:20px;">Enviar</button>
+          <button ion-button block color="primary" (click)="backToPlace()">Enviar</button>
         </ion-item>
       
       </ion-list>
@@ -60,38 +60,4 @@
         <ion-segment-button value="acepted">Aceptados</ion-segment-button>
         <ion-segment-button value="notacepted">No aceptados</ion-segment-button>
     </ion-segment>
-
-
-
-  <ion-card [hidden]="!selectedLocal" padding>
-    <img src="{{selectedLocal?.logo}}"/>
-  </ion-card>
-  
-  <ion-list padding>
-    <ion-item>
-      <ion-label fixed>Nombre</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label fixed>Email</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label fixed>Rut</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label fixed>Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-
-    <ion-item>
-    </ion-item>
-
-    <button ion-button block color="primary" (click)="backToPlace()">Invitar amigo</button>
-
-  </ion-list>
 </ion-content>

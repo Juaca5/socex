@@ -1,0 +1,39 @@
+{
+    "user":{
+        "nombre": "name_user",
+        "correo": "correo_user",
+        "pass" : "pass _user",
+        "locales":[{
+            "id": "id_local",
+            "nombre": "name_local",
+            "logo" : "logo_local",
+            "puntos": "point_local",
+            "ubicaion" : {
+                "latitud" : "latitud",
+                "longitud": "longitud" 
+            },
+            "informacion":{
+                "fono" : "fono_local",
+                "web" : "web_local",
+                "encargado": "nombre_encargado",
+                "vencimiento_punto" : "vencimiento_puntos",
+                "tope_max_desc" : "tope_max_desc",
+                "tope_max_primera_vent" : "tope_max_primera_vent",
+                "restricciones" : [{
+                    "dia" : "dia",
+                    "horario" : [{
+                        "inicio" : "inicio",
+                        "final" : "fin"
+                    }]               
+                }] 
+
+            }
+        }],
+        "notificaiones" :[{
+            "tipo" : "tipo",
+            "contenido" : "contenido",
+            "tiempo_noti": "tiempo de envio de notificaion",
+            "estado" : "atendida_noatendida"
+        }]
+    }
+}

@@ -29,7 +29,7 @@ export class ContactPage {
     const alert = this.alertCtrl.create({
       title: 'Invitación enviada!',
       subTitle: 'Una vez que tu amigo responda, recibiras una notificación con su repuesta!',
-      buttons: ['Entendido']
+      buttons: ['Aceptar']
     });
     alert.present();
   }
