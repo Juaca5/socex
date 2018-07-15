@@ -2,17 +2,42 @@
     "user":{
         "nombre": "name_user",
         "correo": "correo_user",
-        "pass" : "pass _user",
-        "locales":[{
+        "pass" : "pass _user"
+    },
+
+    "notificaiones" :[{
+        "tipo" : "tipo",
+        "contenido" : "contenido",
+        "tiempo_noti": "tiempo de envio de notificaion",
+        "estado" : "atendida_noatendida"
+    }],
+
+    "invitaciones" :[{
+        "tipo" : "tipo_invitacion",
+        "cantacto" : {
+            "nombre" : "nombre_inivtado",
+            "apellido" : "apellido_invitado",
+            "rut": "rut_inivtado"
+        },
+        "dias_espera" : "numero_dias_espera",
+        "fecha_eviada" : "fecha_invitacion_enviada",
+        "fecha_aceptada" : "fecha_de_invitaciones_aceptadas",
+        "punto_obtenidos" : "puntos_obtenidos_por_inv_aceptada",
+        "fecha_cancelada" : "fecha_invitacion_cancelada"
+    }],
+
+    "local":{
+        "sucular":[{
             "id": "id_local",
             "nombre": "name_local",
             "logo" : "logo_local",
             "puntos": "point_local",
-            "ubicaion" : {
+            "ubicacion" : {
                 "latitud" : "latitud",
-                "longitud": "longitud" 
-            },
-            "informacion":{
+                "longitud": "longitud"
+            }
+        }],
+        "informacion":{
                 "fono" : "fono_local",
                 "web" : "web_local",
                 "encargado": "nombre_encargado",
@@ -24,28 +49,9 @@
                     "horario" : [{
                         "inicio" : "inicio",
                         "final" : "fin"
-                    }]               
-                }] 
-            }
-        }],
-        "notificaiones" :[{
-            "tipo" : "tipo",
-            "contenido" : "contenido",
-            "tiempo_noti": "tiempo de envio de notificaion",
-            "estado" : "atendida_noatendida"
-        }],
-        "invitaciones" :[{
-            "tipo" : "tipo_invitacion",
-            "cantacto" : {
-                "nombre" : "nombre_inivtado",
-                "apellido" : "apellido_invitado",
-                "rut": "rut_inivtado"
-            },
-        "dias_espera" : "numero_dias_espera",
-        "fecha_eviada" : "fecha_invitacion_enviada",
-        "fecha_aceptada" : "fecha_de_invitaciones_aceptadas",
-        "punto_obtenidos" : "puntos_obtenidos_por_inv_aceptada",
-        "fecha_cancelada" : "fecha_invitacion_cancelada"
-        }]
+                }]               
+            }] 
+        }
     }
 }
+        
