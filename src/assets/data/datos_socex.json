@@ -33,6 +33,19 @@
             "contenido" : "contenido",
             "tiempo_noti": "tiempo de envio de notificaion",
             "estado" : "atendida_noatendida"
+        }],
+        "invitaciones" :[{
+            "tipo" : "tipo_invitacion",
+            "cantacto" : {
+                "nombre" : "nombre_inivtado",
+                "apellido" : "apellido_invitado",
+                "rut": "rut_inivtado"
+            },
+        "dias_espera" : "numero_dias_espera",
+        "fecha_eviada" : "fecha_invitacion_enviada",
+        "fecha_aceptada" : "fecha_de_invitaciones_aceptadas",
+        "punto_obtenidos" : "puntos_obtenidos_por_inv_aceptada",
+        "fecha_cancelada" : "fecha_invitacion_cancelada"
         }]
     }
 }
