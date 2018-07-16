@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { UserData } from '../../providers/user-data';
 
 /**
  * Generated class for the ConfigurationPage page.
@@ -14,8 +15,11 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
   templateUrl: 'configuration.html',
 })
 export class ConfigurationPage {
-	
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {  	}
+	user: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public userData: UserData) {  	
+    this.user = userData.getUser();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConfigurationPage');

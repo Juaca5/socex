@@ -1,7 +1,7 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { NotificationsData } from '../../providers/notifications-data';
+import { UserData } from '../../providers/user-data';
 
 @Pipe({  
     name: 'filterNotifications',  
@@ -34,7 +34,7 @@ export class NotificationPage {
   enabledSelectAll = true;
   notificationsEnabled = true;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: NotificationsData) {  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: UserData) {  }
 
 
   ionViewDidLoad() {

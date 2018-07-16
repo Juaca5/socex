@@ -34,19 +34,14 @@ export class InvitationsData {
       return data.invitations;
     });
   }
-
   refreshInvitations() {
     this.data = undefined;
     return this.getInvitations();
   }
-
-
-
   addInvitation(inv: any): void {
     // insert invitación en el servidor
     this.data.invitations.push(inv);
   };
-
   removeInvitation(inv: any): void {
     inv.checked = true;
     this.updateInvitation(inv);
@@ -55,10 +50,8 @@ export class InvitationsData {
       this.data.invitations.splice(index, 1);
     }
   };
-
   updateInvitation(inv: any): void {
     // modificar invitación en servidor
   }
-
 
 }

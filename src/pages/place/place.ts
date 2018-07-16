@@ -6,8 +6,9 @@ import { ContactPage } from '../contact/contact';
 import { PointsPage } from '../points/points';
 import { InfolocalPage } from '../infolocal/infolocal';
 
-import { LocalesData } from '../../providers/locales-data';
-import { InvitationsData } from '../../providers/invitations-data';
+import { UserData } from '../../providers/user-data';
+//import { UserData } from '../../providers/locales-data';
+//import { UserData } from '../../providers/invitations-data';
 
 
 
@@ -53,7 +54,7 @@ export class PlacePage {
 
 
   @ViewChild('mapCanvas') mapElement: ElementRef;
-	constructor(public localsData: LocalesData, public invData: InvitationsData, public platform: Platform, public navCtrl: NavController, public navParams: NavParams) {
+	constructor(public localsData: UserData, public invData: UserData, public platform: Platform, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {

@@ -1,5 +1,15 @@
 {
 
+"user": {
+  "username": "juancarlos",
+  "password": "juancarlos",
+  "name"  : "Juan Carlos Tapia Rojo",
+  "email"   : "jc.tapia.rojo@gmail.com",
+  "phone"   : 918749123,
+  "rut"     : "17.345.234-5",
+  "mailNotifications": true
+},
+
 "invitations": [{
   "date"   : "2018-06-17",
   "expire" : "2018-07-17",

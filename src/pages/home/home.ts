@@ -5,7 +5,7 @@ import { AlertController } from 'ionic-angular';
 import { NotificationPage } from '../notification/notification';
 import { ContactPage } from '../contact/contact';
 
-import { NotificationsData } from '../../providers/notifications-data';
+import { UserData } from '../../providers/user-data';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class HomePage {
   constructor(
     public navCtrl: NavController, 
     public app: App, 
-    public notisData: NotificationsData,
+    public notisData: UserData,
     private alertCtrl: AlertController) {
   }
 
