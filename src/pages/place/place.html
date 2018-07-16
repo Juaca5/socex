@@ -31,17 +31,17 @@
 
 <ion-content [hidden]="selectedLocal" id="localesList">
   <div id="map_canvas" [hidden]="OnMap == 1" #mapCanvas  ion-fixed></div>
-  <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}" >
-      <ion-list>
+  <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}" >   
+    <ion-list>
         <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
-            <ion-thumbnail (click)="LocateInMap(l)" item-start>
-              <img style="width: 100px;height: auto;" src="{{l.logo}}">
-            </ion-thumbnail>
-            <button ion-button clear (click)="Points(l)">{{l.puntos}}</button>
-            <button ion-button (click)="Invite(l)">invitar</button>
-            <button ion-button (click)="LocalDetails(l)" clear>{{l.suma}}</button>
+          <ion-thumbnail (click)="LocateInMap(l)" item-start>
+            <img style="width: 100px;height: auto;" src="{{l.logo}}">
+          </ion-thumbnail>
+          <button ion-button class="boton33" clear (click)="Points(l)">{{l.puntos}}</button>
+          <button ion-button class="boton33" (click)="Invite(l)">invitar</button>
+          <button ion-button class="boton33" (click)="LocalDetails(l)" clear>{{l.suma}}</button>
         </ion-item>
-      </ion-list>
+    </ion-list>
   </div>
 </ion-content>
 
@@ -52,50 +52,50 @@
         <h3 style="text-align: center;">Información</h3>
         <ion-grid>
           <ion-row>
-            <ion-col col-6>
+            <ion-col>
               Teléfono: <br>
             </ion-col>
-            <ion-col col-6>
+            <ion-col>
               +569 9 87612544
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col col-6>
+            <ion-col>
               Página web:
             </ion-col>
-            <ion-col col-6>
+            <ion-col>
               www.{{selectedLocal?.name}}.cl
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col col-6>
+            <ion-col>
               Nombre encargado:
             </ion-col>
-            <ion-col col-6>
+            <ion-col>
               Alexis Reyes
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col col-6>
+            <ion-col>
               Vigencia de puntos:
             </ion-col>
-            <ion-col col-6>
+            <ion-col>
               6 meses
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col col-6>
+            <ion-col>
               Máximo descuento: 
             </ion-col>
-            <ion-col col-6>
+            <ion-col>
               Hasta un 40%
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col col-6>
+            <ion-col>
               Desc. en 1ra venta:
             </ion-col>
-            <ion-col col-6>
+            <ion-col>
               Hasta un 40%
             </ion-col>
           </ion-row>

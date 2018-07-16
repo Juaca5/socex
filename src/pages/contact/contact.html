@@ -4,36 +4,60 @@
 	</ion-navbar>
   </ion-header>
 
-<ion-content>
-  <ion-card [hidden]="!selectedLocal" padding>
-    <img src="{{selectedLocal?.logo}}"/>
-  </ion-card>
   
-  <ion-list padding>
-    <ion-item>
-      <ion-label fixed>Nombre</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
+<ion-content>
 
-    <ion-item>
-      <ion-label fixed>Email</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label fixed>Rut</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+                <img src="{{selectedLocal?.logo}}" class="img-responsive" />
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+            </div>
+          </ion-col>
 
-    <ion-item>
-      <ion-label fixed>Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+        </ion-row>
+    </ion-grid>
 
-    <ion-item>
-    </ion-item>
+    <ion-grid center text-center>
+    
+    <ion-list>
+        <ion-label>Completa los datos <br/>para tu amigo</ion-label>
 
-    <button ion-button block color="primary" (click)="backToPlace()">Invitar amigo</button>
+        <ion-item>
+          <ion-label stacked>Nombre amigo/a</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label stacked>Apellido amigo/a</ion-label>
+          <ion-input type="text"></ion-input>
+        </ion-item>
 
-  </ion-list>
+        <ion-item>
+            <ion-label stacked>Rut amigo/a</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <button ion-button block color="primary" (click)="backToPlace()">Enviar</button>
+        </ion-item>
+      
+      </ion-list>
+
+  </ion-grid>
+
+    <ion-segment padding [(ngModel)]="mymodel" ion-text >
+        <ion-segment-button value="pending">Pendientes</ion-segment-button>
+        <ion-segment-button value="acepted">Aceptados</ion-segment-button>
+        <ion-segment-button value="notacepted">No aceptados</ion-segment-button>
+    </ion-segment>
 </ion-content>
