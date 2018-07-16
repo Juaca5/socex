@@ -107,8 +107,8 @@ export class UserData {
   getLocales() {
     return this.load().map((data: any) => {
       return data.locales.sort((a: any, b: any) => { // ordenar por nombre, se puede cambiar
-        let aName = a.name.split(' ').pop();
-        let bName = b.name.split(' ').pop();
+        let aName = a.informacion.nombre; //.split(' ').pop();
+        let bName = b.informacion.nombre; //.split(' ').pop();
         return aName.localeCompare(bName);
       });
     });
@@ -129,7 +129,7 @@ export class UserData {
     return (this._favorites.indexOf(sessionName) > -1);
   };
 
-  login(username: string, password: string): boolean {
+  login(username: string, password: string):  Promise {
     console.log('login: '+username+', '+password);
     return this.http.get(this.URL_login) // +'?username='+'&password='+password)
         .map(this.processLogin, this);

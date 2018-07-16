@@ -6,16 +6,16 @@ import { UserData } from '../../providers/user-data';
 @Pipe({  
     name: 'filterNotifications',  
     pure: false  
-})  
+})
 export class FilterNotificationsPipe implements PipeTransform {  
     transform(items: any[], filter: any): any {  
-      var user = filter.name.toLowerCase();
         if (!items || !filter) {  
             return [];  
         }  
+        var recept = filter.word.toLowerCase();
         return items.filter(item => (
-          item.user.toLowerCase().indexOf(user) >= 0 ||
-          item.message.toLowerCase().indexOf(user) >= 0
+          item.recept.toLowerCase().indexOf(recept) >= 0 ||
+          item.contenido.toLowerCase().indexOf(recept) >= 0
         ));  
     }  
 }  
@@ -28,8 +28,8 @@ export class FilterNotificationsPipe implements PipeTransform {
 })
 export class NotificationPage {
   queryText: String = '';
-  filter: any = {name: '', location: '', hasResult: true};
-  notifications: Array<{user: string, message: string, time: string, viewed: boolean, isChecked: boolean, enabled: boolean}> = [];
+  filter: any = {word: '', location: '', hasResult: true};
+  notifications: Array<any> = [];
   deleteAll: boolean = false;
   enabledSelectAll = true;
   notificationsEnabled = true;
@@ -41,7 +41,7 @@ export class NotificationPage {
     console.log('ionViewDidLoad NotificationPage');
     this.confData.getNotifications().subscribe((data: any) => {
       this.notifications = data;
-      console.log('notificarions list: '+this.notifications);
+      //console.log('notificarions list: '+this.notifications);
     });
   }
   refreshNotifications(){
@@ -113,7 +113,7 @@ export class NotificationPage {
   ReadNotifications(){
       for (let i = this.notifications.length - 1; i >= 0; i--) {
         if(this.notifications[i].isChecked){
-          this.notifications[i].viewed = true;
+          this.notifications[i].estado = true;
         }
       }
       this.UnselectAll();
@@ -121,7 +121,7 @@ export class NotificationPage {
 
 
   updateNotifications(){
-    this.filter.name =this.queryText;
+    this.filter.word =this.queryText;
     this.UnselectAll();
   }
 

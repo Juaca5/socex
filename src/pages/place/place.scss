@@ -65,9 +65,14 @@ page-place {
         padding: 10px;
     }
     ion-item, ion-thumbnail {
-        height: 70px;
+        /*height: 70px;*/
     }
     ion-thumbnail img{
         padding: 20px 0px;
+    }
+
+    .input-wrapper > ion-label {
+        padding: 0px;
+        margin:  0px;
     }
 }

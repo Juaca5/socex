@@ -25,7 +25,7 @@ export class FilterLocalesrPipe implements PipeTransform {
             return [];  
         }  
         return items.filter(item => (
-          item.name.toLowerCase().indexOf(name) >= 0
+          item.informacion.nombre.toLowerCase().indexOf(name) >= 0
         ));  
     }  
 }  
@@ -73,24 +73,24 @@ export class PlacePage {
 
           let mapEle = this.mapElement.nativeElement;
           let map = new google.maps.Map(mapEle, {
-            center: mapData.find((d: any) => d.center),
+            center: this.allLocales[0].sucursales[0].ubicacion,
             zoom: 16
           });
         
-          mapData.forEach((markerData: any) => {
-
-            let infoWindow = new google.maps.InfoWindow({
-              content: `<h5>${markerData.name}</h5>`
-            });
-
-            let marker = new google.maps.Marker({
-              position: markerData,
-              map: map,
-              title: markerData.name
-            });
-
-            marker.addListener('click', () => {
-              infoWindow.open(map, marker);
+          this.allLocales.forEach((localData: any) => {
+            console.log(JSON.stringify(localData.informacion.restricciones));
+            localData.sucursales.forEach((sucursal: any) => {
+                let infoWindow = new google.maps.InfoWindow({
+                  content: `<h5>${localData.informacion.nombre}</h5>`
+                });
+                let marker = new google.maps.Marker({
+                  position: sucursal.ubicacion,
+                  map: map,
+                  title: localData.informacion.nombre
+                });
+                marker.addListener('click', () => {
+                  infoWindow.open(map, marker);
+                });
             });
           });
 
@@ -134,8 +134,9 @@ export class PlacePage {
       console.log('locateInMap!');
     }
   }
+  
   InfoLocal(local){
-    this.navCtrl.push(InfolocalPage, {
+    this.navCtrl.setRoot(InfolocalPage, {
       local: local
     });
   }

@@ -35,11 +35,13 @@
     <ion-list>
         <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
           <ion-thumbnail (click)="LocateInMap(l)" item-start>
-            <img style="width: 100px;height: auto;" src="{{l.logo}}">
+            <img style="width: 100px;height: auto;" src="{{l.informacion.logo}}">
           </ion-thumbnail>
-          <button ion-button class="boton33" clear (click)="Points(l)">{{l.puntos}}</button>
+          <button ion-button class="boton33" clear (click)="Points(l)">{{l.informacion.puntos}}</button>
           <button ion-button class="boton33" (click)="Invite(l)">invitar</button>
-          <button ion-button class="boton33" (click)="LocalDetails(l)" clear>{{l.suma}}</button>
+          <button ion-button class="boton33" (click)="LocalDetails(l)" clear>
+            {{l.informacion.tope_max_desc}} + {{l.informacion.tope_max_primera_vent}}
+          </button>
         </ion-item>
     </ion-list>
   </div>
@@ -56,7 +58,7 @@
               Teléfono: <br>
             </ion-col>
             <ion-col>
-              +569 9 87612544
+              {{selectedLocal?.informacion.fono}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -64,7 +66,7 @@
               Página web:
             </ion-col>
             <ion-col>
-              www.{{selectedLocal?.name}}.cl
+              {{selectedLocal?.informacion.web}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -72,7 +74,7 @@
               Nombre encargado:
             </ion-col>
             <ion-col>
-              Alexis Reyes
+              {{selectedLocal?.informacion.encargado}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -80,7 +82,7 @@
               Vigencia de puntos:
             </ion-col>
             <ion-col>
-              6 meses
+              {{selectedLocal?.informacion.vencimiento_punto}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -88,7 +90,7 @@
               Máximo descuento: 
             </ion-col>
             <ion-col>
-              Hasta un 40%
+              {{selectedLocal?.informacion.tope_max_desc}}%
             </ion-col>
           </ion-row>
           <ion-row>
@@ -96,29 +98,27 @@
               Desc. en 1ra venta:
             </ion-col>
             <ion-col>
-              Hasta un 40%
+              {{selectedLocal?.informacion.tope_max_primera_vent}}%
             </ion-col>
           </ion-row>
         </ion-grid>
     </ion-card-content>
 
 
-      <h3 style="text-align: center;">Horario de atención</h3>
-      <ion-grid style="text-align: center;">
-          <ion-row>
-            <ion-col col-12>
-              Desde 09:00 a 23:00
-            </ion-col>
-          </ion-row>
+    <h3 style="text-align: center;">Horario de atención</h3>
+    <ion-list>
+        <ion-item *ngFor="let d of selectedLocal?.informacion.restricciones">
 
-        <ion-row style="padding: 10px 0px 20px 0px;">
-          <ion-col class="dayCol" *ngFor="let d of days" class="dayTitle" no-padding>
-            {{d}}<br>
+          <div style="width: 50%;float: left;">
             <ion-icon color="success" class="dayIcon" name="checkmark-circle"></ion-icon>
-          </ion-col>
-        </ion-row>
+            {{d.dia}}:
+          </div>
+          <div style="width: 50%;float: left;padding-top: 6px;">
+            {{d.inicio}} - {{d.final}}
+          </div>
 
-      </ion-grid>
+        </ion-item>
+    </ion-list>
 
   </ion-card>
 </ion-content>

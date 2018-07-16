@@ -3,104 +3,233 @@
 "user": {
   "username": "juancarlos",
   "password": "juancarlos",
-  "name"  : "Juan Carlos Tapia Rojo",
+  "name"    : "Juan Carlos Tapia Rojo",
   "email"   : "jc.tapia.rojo@gmail.com",
   "phone"   : 918749123,
   "rut"     : "17.345.234-5",
   "mailNotifications": true
 },
 
-"invitations": [{
-  "date"   : "2018-06-17",
-  "expire" : "2018-07-17",
-  "user"   : "Juan Carlos",
-  "recept" : "Alexis Reyes",
-  "state"  : 0,
-  "message": "Invitaste a Alexis Reyes",
-  "local"  : "Itallissimo"
-  },{
-  "date"   : "2018-06-17",
-  "expire" : "2018-07-17",
-  "user"   : "Juan Carlos",
-  "recept" : "Alexis Reyes",
-  "state"  : 2,
-  "message": "Invitaste a Alexis Reyes",
-  "local"  : "Itallissimo"
-  },{
-  "date"   : "2018-06-17",
-  "expire" : "2018-07-17",
-  "user"   : "Juan Carlos",
-  "recept" : "Alexis Reyes",
-  "state"  : 1,
-  "message": "Invitaste a Alexis Reyes",
-  "local"  : "Itallissimo"
+
+
+"invitations" :[{
+    "tipo" : "tipo invitacion",
+    "dias_espera"     : 4,
+    "fecha_eviada"    : "2018-07-01",
+    "fecha_respuesta" : "2018-07-17",
+    "punto_obtenidos" : 1000,
+    "aceptada"        : false,
+    "cantacto" : {
+        "rut"     : "17.345.876-1",
+        "nombre"  : "Alexis",
+        "apellido": "Reyes"
+      }
+    },{
+    "tipo" : "tipo invitacion",
+    "dias_espera"     : 4,
+    "fecha_eviada"    : "2018-07-01",
+    "fecha_respuesta" : "2018-07-17",
+    "punto_obtenidos" : 1000,
+    "aceptada"        : false,
+    "cantacto" : {
+        "rut"     : "17.345.876-1",
+        "nombre"  : "Alexis",
+        "apellido": "Reyes"
+      }
+    },{
+    "tipo" : "tipo invitacion",
+    "dias_espera"     : 4,
+    "fecha_eviada"    : "2018-07-01",
+    "fecha_respuesta" : "2018-07-17",
+    "punto_obtenidos" : 1000,
+    "aceptada"        : false,
+    "cantacto" : {
+        "rut"     : "17.345.876-1",
+        "nombre"  : "Alexis",
+        "apellido": "Reyes"
+      }
+    },{
+    "tipo" : "tipo invitacion",
+    "dias_espera"     : 4,
+    "fecha_eviada"    : "2018-07-01",
+    "fecha_respuesta" : "2018-07-17",
+    "punto_obtenidos" : 1000,
+    "aceptada"        : false,
+    "cantacto" : {
+        "rut"     : "17.345.876-1",
+        "nombre"  : "Alexis",
+        "apellido": "Reyes"
+      }
 }],
 
+
+
 "notifications": [{
-  "date"   : "2018-06-17",
-  "expire" : "2018-07-17",
-  "user"   : "Juan Carlos",
+  "tiempo_noti"   : "2018-06-17",
   "recept" : "Alexis Reyes",
-  "state"  : 0,
-  "message": "Invitaste a Alexis Reyes",
+  "tipo"  : "invitacion",
+  "contenido": "Invitaste a Alexis Reyes",
   "local"  : "Itallissimo",
   "time"   : "hace 45 minutos", 
-  "viewed" : false,
-  "isChecked": false
+  "estado" : false
   },{
-  "date"   : "2018-06-17",
-  "expire" : "2018-07-17",
-  "user"   : "Juan Carlos",
+  "tiempo_noti"   : "2018-06-18",
   "recept" : "Alexis Reyes",
-  "state"  : 2,
-  "message": "Invitaste a Alexis Reyes",
+  "tipo"  :"invitacion",
+  "contenido": "Invitaste a Alexis Reyes",
   "local"  : "Itallissimo",
   "time"   : "hace 45 minutos", 
-  "viewed" : false,
-  "isChecked": false
+  "estado" : false
   },{
-  "date"   : "2018-06-17",
-  "expire" : "2018-07-17",
-  "user"   : "Juan Carlos",
+  "tiempo_noti"   : "2018-06-19",
   "recept" : "Alexis Reyes",
-  "state"  : 1,
-  "message": "Invitaste a Alexis Reyes",
+  "tipo"  :"invitacion",
+  "contenido": "Invitaste a Alexis Reyes",
   "local"  : "Itallissimo",
   "time"   : "hace 45 minutos", 
-  "viewed" : false,
-  "isChecked": false
+  "estado" : false
+  },{
+  "tiempo_noti"   : "2018-06-20",
+  "recept" : "Alexis Reyes",
+  "tipo"  :"invitacion",
+  "contenido": "Invitaste a Alexis Reyes",
+  "local"  : "Itallissimo",
+  "time"   : "hace 45 minutos", 
+  "estado" : false
+  },{
+  "tiempo_noti"   : "2018-06-22",
+  "recept" : "Alexis Reyes",
+  "tipo"  :"invitacion",
+  "contenido": "Invitaste a Alexis Reyes",
+  "local"  : "Itallissimo",
+  "time"   : "hace 45 minutos", 
+  "estado" : false
 }],
 
 
 "locales": [{
-  "name": "Itallissimo",
-  "lat": 43.071584,
-  "lng": -89.380120,
-  "center": true,
-  "logo": "assets/imgs/locales/italissimo.png", 
-  "suma": "15 + 15",
-  "puntos": 5000 
-}, {
-  "name": "Starbucks",
-  "lat": 43.074395,
-  "lng": -89.381056,
-  "logo": "assets/imgs/locales/starbucks.jpg", 
-  "suma": "15 + 10",
-  "puntos": 3000 
-}, {
-  "name": "Piccola Italia",
-  "lat": 43.07336,
-  "lng": -89.38335,
-  "logo": "assets/imgs/locales/piccola_italia.png", 
-  "suma": "10 + 15",
-  "puntos": 4500 
-}, {
-  "name": "Fellini",
-  "logo": "assets/imgs/logo_sin_fondo.png", 
-  "lat": 43.07236,
-  "lng": -89.38222,
-  "suma": "10 + 10",
-  "puntos": 3000
-}]
+        "informacion":{
+          "nombre"                : "Itallissimo",
+          "logo"                  : "assets/imgs/locales/italissimo.png", 
+          "web"                   : "",
+          "fono"                  : "600 200 4500",
+          "encargado"             : "Jose Pable Undurraga",
+          "puntos"                : 3000,
+          "vencimiento_punto"     : "2018-09-18",
+          "tope_max_desc"         : 20,
+          "tope_max_primera_vent" : 40,
+          "restricciones" : [{
+              "dia"     : "Lunes",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Martes",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Miércoles",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Jueves",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Viernes",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Sábado",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Domingo",
+              "inicio" : "cerrado",
+              "final"  : "cerrado"
+          }] 
+        },
+        "sucursales":[{
+          "id": 0,
+          "center": true,
+          "ubicacion" : {
+              "lat": 43.071584,
+              "lng": -89.380120
+          }
+          },{
+          "id": 1,
+          "ubicacion" : {
+              "lat": 53.071584,
+              "lng": -91.380120
+          }
+          },{
+          "id": 2,
+          "ubicacion" : {
+              "lat": 63.071584,
+              "lng": -39.380120
+          }
+        }]
+
+    }, {
+
+        "informacion":{
+          "nombre"                : "Starbucks",
+          "logo"                  : "assets/imgs/locales/starbucks.jpg", 
+          "web"                   : "",
+          "fono"                  : "600 200 4500",
+          "encargado"             : "Jose Pable Undurraga",
+          "puntos"                : 3000,
+          "vencimiento_punto"     : "2018-09-18",
+          "tope_max_desc"         : 20,
+          "tope_max_primera_vent" : 40,
+          "restricciones" : [{
+              "dia"     : "Lunes",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Martes",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Miércoles",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Jueves",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Viernes",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Sábado",
+              "inicio" : "10:00",
+              "final"  : "21:00"
+              },{
+              "dia"     : "Domingo",
+              "inicio" : "cerrado",
+              "final"  : "cerrado"
+          }] 
+        },
+        "sucursales":[{
+          "id": 3,
+          "ubicacion" : {
+              "lat": 44.071584,
+              "lng": -86.380120
+          }
+          },{
+          "id": 4,
+          "ubicacion" : {
+              "lat": 43.071584,
+              "lng": -81.380120
+          }
+          },{
+          "id": 5,
+          "ubicacion" : {
+              "lat": 46.071584,
+              "lng": -79.380120
+          }
+        }]
+    }]
 
 }
