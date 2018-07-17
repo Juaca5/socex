@@ -5,4 +5,17 @@ page-contact {
         height:30px !important;
     }
 
+    ion-input{
+    	color: #fff!important;
+    	background-color: #000!important;
+    }
+
+    .centerform{
+    	width: 200px;
+    	margin: 0px calc(50% - 100px);
+    }
+    .sideform{
+    	width: calc(50% - 100px);
+    }
+
 }

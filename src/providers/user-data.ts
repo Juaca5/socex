@@ -129,7 +129,7 @@ export class UserData {
     return (this._favorites.indexOf(sessionName) > -1);
   };
 
-  login(username: string, password: string):  Promise {
+  login(username: string, password: string):  Promise<any> {
     console.log('login: '+username+', '+password);
     return this.http.get(this.URL_login) // +'?username='+'&password='+password)
         .map(this.processLogin, this);
