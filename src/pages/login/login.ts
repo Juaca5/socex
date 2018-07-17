@@ -15,11 +15,15 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'login.html',
 })
 export class Login {
+
   username: string;
   password: string;
   error:    string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userData: UserData) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public userData: UserData) {
   }
 
   ionViewDidLoad() {
@@ -27,7 +31,9 @@ export class Login {
   }
 
   login(){
+
     this.error = undefined;
+
     if(!this.username || !this.password){
       this.error = 'Ingrese su nombre de usuario y contraseña.';
       return; 
@@ -40,7 +46,6 @@ export class Login {
           this.error = 'Nombre de usuario o contraseña incorrecta.';
         }
       });
-
     } else {
         this.error = 'Error de conexión. Revise su conexión a Internet e intente nuevamente.';
     }

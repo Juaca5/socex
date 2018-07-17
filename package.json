@@ -1,8 +1,8 @@
 {
-  "name": "ionic-welcome",
+  "name": "socex",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "Fellini",
+  "homepage": "http://www.fellini.cl/Fellini/index.html",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

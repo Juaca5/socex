@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class UserData {
+ 
   URL_login: string = 'assets/data/data.json';
   URL_data:  string = 'assets/data/data.json';
 
@@ -19,8 +20,12 @@ export class UserData {
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
   data: any;
   user: any;
+  
 
-  constructor(public http: Http, public events: Events, public storage: Storage) {}
+  constructor(
+    public http: Http, 
+    public events: Events, 
+    public storage: Storage) {}
 
   load(): any {
     if (this.data) {
@@ -118,21 +123,13 @@ export class UserData {
     return this.getLocales();
   }
 
-
-
-
-
-
-
-
   hasFavorite(sessionName: string): boolean {
     return (this._favorites.indexOf(sessionName) > -1);
   };
 
   login(username: string, password: string):  Promise {
     console.log('login: '+username+', '+password);
-    return this.http.get(this.URL_login) // +'?username='+'&password='+password)
-        .map(this.processLogin, this);
+    return this.http.get(this.URL_login).map(this.processLogin, this);
   };
 
   logout(): void {
