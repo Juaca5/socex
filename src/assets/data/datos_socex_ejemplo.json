@@ -51,7 +51,14 @@
                         "final" : "fin"
                 }]               
             }] 
-        }
+        }, 
+        "cartola":[{
+            "fecha": "fecha",
+            "cuanta": "valor_de_boleta",
+            "pago": "valor_pagado",
+            "pesos": "pesos_usados_para_completar_pago",
+            "saldo": "pesos_restantes_de_operacion"
+        }]
     }
 }
         
