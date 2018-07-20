@@ -5,8 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
-import { Events } from 'ionic-angular';
+import { Events, Card } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { ResolvedReflectiveProvider_ } from '../../node_modules/@angular/core/src/di/reflective_provider';
 
 
 @Injectable()
@@ -127,7 +128,7 @@ export class UserData {
     return (this._favorites.indexOf(sessionName) > -1);
   };
 
-  login(username: string, password: string):  Promise<any> {
+  login(username: string, password: string):  Promise {
     console.log('login: '+username+', '+password);
     return this.http.get(this.URL_login).map(this.processLogin, this);
   };
