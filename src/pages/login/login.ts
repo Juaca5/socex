@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Network } from '@ionic-native/network';
 import { TabsPage } from '../tabs/tabs';
 import { UserData } from '../../providers/user-data';
 
@@ -15,16 +16,24 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'login.html',
 })
 export class Login {
+
   username: string;
   password: string;
   error:    string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userData: UserData) {
+  connection: boolean = false;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public userData: UserData,
+    private network: Network ){
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
   }
+
 
   login(){
     this.error = undefined;
@@ -32,7 +41,8 @@ export class Login {
       this.error = 'Ingrese su nombre de usuario y contraseña.';
       return; 
     }
-    if(true){
+
+    if(this.network.onConnect){
       this.userData.login(this.username, this.password).subscribe((sucess: any) => {
         if(sucess == true){
           this.navCtrl.setRoot(TabsPage);

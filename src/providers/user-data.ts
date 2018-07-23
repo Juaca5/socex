@@ -17,8 +17,8 @@ export class UserData {
   URL_data:  string = 'http://localhost/socex_backend/API_Data/';
   */
 
-  URL_login: string = 'assets/data/data.json';
-  URL_data:  string = 'assets/data/data.json';
+  URL_login: string = '../assets/data/data.json';
+  URL_data:  string = '../assets/data/data.json';
 
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';

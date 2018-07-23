@@ -3,6 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { Network } from '@ionic-native/network';
 
 import { MyApp } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -83,6 +84,7 @@ import { UserData } from '../providers/user-data';
     InvitationsData,
     LocalesData,
     UserData,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
