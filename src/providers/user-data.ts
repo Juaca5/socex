@@ -12,14 +12,14 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UserData {
 
-  /*
-  URL_login: string = 'http://localhost/socex_backend/API_Login/';
-  URL_data:  string = 'http://localhost/socex_backend/API_Data/';
-  */
+  
+  URL_login: string = 'http://192.168.43.170/socex_backend/API_Login/';
+  URL_data:  string = 'http://192.168.43.170/socex_backend/API_Data/';
+  
 
   URL_login: string = 'assets/data/data.json';
   URL_data:  string = 'assets/data/data.json';
-
+  */
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
