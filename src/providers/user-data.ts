@@ -17,8 +17,8 @@ export class UserData {
   URL_data:  string = 'http://localhost/socex_backend/API_Data/';
   */
 
-  URL_login: string = '../assets/data/data.json';
-  URL_data:  string = '../assets/data/data.json';
+  URL_login: string = 'assets/data/data.json';
+  URL_data:  string = 'assets/data/data.json';
 
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
@@ -27,7 +27,7 @@ export class UserData {
   user: any;
 
   constructor(public http: Http, public events: Events, public storage: Storage) {}
-
+  
   load(): any {
     if (this.data) {
       return Observable.of(this.data);
@@ -36,6 +36,17 @@ export class UserData {
         .map(this.processData, this);
     }
   }
+  /*
+
+  load(): any {
+    if (this.data) {
+      return Observable.of(this.data);
+    } else {
+      return this.http.get(this.URL_data)
+        .map(this.processData, this);
+    }
+  }
+*/
   processData(data: any) {
     this.data = data.json();
     return this.data;
@@ -123,22 +134,23 @@ export class UserData {
     return this.getLocales();
   }
 
-
-
-
-
-
-
-
   hasFavorite(sessionName: string): boolean {
     return (this._favorites.indexOf(sessionName) > -1);
   };
-
+  
   login(username: string, password: string) {
     console.log('login: '+username+', '+password);
     return this.http.get(this.URL_login+'/'+username+'/'+password)
         .map(this.processLogin, this);
   };
+  
+  /*
+  login(username: string, password: string) {
+    console.log('login: '+username+', '+password);
+    return this.http.get(this.URL_login)
+        .map(this.processLogin, this);
+  };
+  */
 
   logout(): void {
     this.storage.remove(this.HAS_LOGGED_IN);

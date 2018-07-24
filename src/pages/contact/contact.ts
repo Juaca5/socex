@@ -18,7 +18,8 @@ export class ContactPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlacePage');
-    	this.selectedLocal = this.navParams.get('local');
+      this.selectedLocal = this.navParams.get('local');
+      console.log(this.selectedLocal.nombre);
   }
   backToPlace(){
   	this.showAlert();

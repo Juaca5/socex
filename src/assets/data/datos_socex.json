@@ -37,6 +37,13 @@
                 "longitud": "longitud"
             }
         }],
+        "cartola" : [{
+            "fecha" : "fecha",
+            "cuanta": "cuanta",
+            "pago"  : "pago",
+            "pesos" : "pesos",
+            "saldo" : "saldo"
+        }],
         "informacion":{
                 "fono" : "fono_local",
                 "web" : "web_local",

@@ -36,7 +36,7 @@ export class PointsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartolaPage');
     this.selectedLocal = this.navParams.get('local');
-    
+
     this._HTTP
       .get<Config>('../../assets/data/techologies.json')
       .subscribe((data) =>
@@ -44,5 +44,4 @@ export class PointsPage {
          this.rows = data.technologies;
       });
   }
-
 }
