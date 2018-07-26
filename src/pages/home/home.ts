@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, App } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 
 import { NotificationPage } from '../notification/notification';
 import { ContactPage } from '../contact/contact';
@@ -13,12 +14,15 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'home.html'
 })
 export class HomePage {
+
   notificationsLeft: Number = 0;
+
   constructor(
     public navCtrl: NavController, 
     public app: App, 
     public notisData: UserData,
-    private alertCtrl: AlertController) {
+    private alertCtrl: AlertController,
+    public modalCtrl : ModalController ){
   }
 
   ionViewDidEnter() {
@@ -57,6 +61,13 @@ export class HomePage {
     });
     alert.present();
   }
+  
+  openContactFriends(){
 
+    t
 
+    var modalPage = this.modalCtrl.create('ModalPage'); modalPage.present(); 
+    
+  }
 }
+
