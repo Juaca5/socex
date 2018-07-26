@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 
 import { PointsPage } from '../points/points';
-import { InfolocalPage } from '../infolocal/infolocal';
+import { InfoPage } from '../info/info';
 
 import { UserData } from '../../providers/user-data';
 
@@ -138,7 +138,7 @@ export class PlacePage {
   }
   
   InfoLocal(local){
-    this.navCtrl.setRoot(InfolocalPage, {
+    this.navCtrl.setRoot(InfoPage, {
       local: local
     });
   }

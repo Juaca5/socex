@@ -7,8 +7,7 @@
 <ion-header >
   <ion-navbar hideBackButton="true">
 	  <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
-	</ion-navbar>
-  
+  </ion-navbar>
   <ion-toolbar no-border-top [hidden]="selectedLocal">
     <ion-searchbar color="primary"
                    [(ngModel)]="queryText"
@@ -25,9 +24,7 @@
       Lista
     </ion-segment-button>
   </ion-segment>
-
 </ion-header>
-
 
 <ion-content [hidden]="selectedLocal" id="localesList">
   <div id="map_canvas" [hidden]="OnMap == 1" #mapCanvas  ion-fixed></div>

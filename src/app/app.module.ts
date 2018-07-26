@@ -4,36 +4,71 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { Network } from '@ionic-native/network';
+import { StatusBar } from '@ionic-native/status-bar'; 
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
-
+/*
+ * pages when the application starts
+ * |--- welcome 
+ *     |--- login 
+ * |--- confirmation (code)
+ */
 import { Welcome } from '../pages/welcome/welcome';
 import { Login } from '../pages/login/login';
 import { Signup } from '../pages/signup/signup';
 import { ConfirmationPage } from '../pages/confirmation/confirmation';
-import { ContactPage } from '../pages/contact/contact';
-
+/* 
+ * Pages link home
+ * |--- home
+ *     |--- customer support (modal page)
+ *     |--- contact friends (modal page)
+ */
 import { HomePage } from '../pages/home/home';
+import { ContactfriendsPage } from '../pages/contactfriends/contactfriends';
+import { CustomersupportPage } from '../pages/customersupport/customersupport';
+/*
+ * pages link place
+ * |--- place --- filter local
+ *     |--- points (modal page)
+ *     |--- contact (modal page, send from)
+ *     |--- info local (modal page)
+ */
 import { PlacePage } from '../pages/place/place';
-import { NotificationPage } from '../pages/notification/notification';
-import { ConfigurationPage } from '../pages/configuration/configuration';
-import { InfolocalPage } from '../pages/infolocal/infolocal';
-
-import { PointsPage } from '../pages/points/points';
-
-import { TabsPage } from '../pages/tabs/tabs';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { IonicStorageModule } from '@ionic/storage';
-import { FilterNotificationsPipe } from '../pages/notification/notification'; 
 import { FilterLocalesrPipe } from '../pages/place/place'; 
+import { PointsPage } from '../pages/points/points';
+import { ContactPage } from '../pages/contact/contact';
+import { InfoPage } from '../pages/info/info';
+/*
+ * pages link notify
+ * |--- notification -- filter notify
+ */
+import { NotificationPage } from '../pages/notification/notification';
+import { FilterNotificationsPipe } from '../pages/notification/notification';
+/*
+ * page link config
+ * |--- config
+ */
+import { ConfigurationPage } from '../pages/configuration/configuration';
+/* 
+ * tabs navegation
+ * |--- tabs
+ */
+import { TabsPage } from '../pages/tabs/tabs';
+/*
+ * proiders
+ * |--- user
+ * |--- locales
+ * |--- notifications
+ * |--- invitation 
+ */
+import { UserData } from '../providers/user-data';
+import { LocalesData } from '../providers/locales-data';
 import { NotificationsData } from '../providers/notifications-data';
 import { InvitationsData } from '../providers/invitations-data';
-import { LocalesData } from '../providers/locales-data';
-import { UserData } from '../providers/user-data';
+
 
 @NgModule({
   declarations: [
@@ -44,11 +79,13 @@ import { UserData } from '../providers/user-data';
     ConfirmationPage,
     ContactPage,
     HomePage,
+    InfoPage,
     PlacePage,
     PointsPage,
-    InfolocalPage,
     NotificationPage,
     ConfigurationPage,
+    ContactfriendsPage,
+    CustomersupportPage,
     TabsPage,
     FilterLocalesrPipe,
     FilterNotificationsPipe
@@ -67,11 +104,13 @@ import { UserData } from '../providers/user-data';
     Welcome,
     Login,
     Signup,
+    InfoPage,
     ConfirmationPage,
     ContactPage,
     HomePage,
+    ContactfriendsPage,
+    CustomersupportPage,
     PlacePage,
-    InfolocalPage,
     PointsPage,
     NotificationPage,
     ConfigurationPage,
