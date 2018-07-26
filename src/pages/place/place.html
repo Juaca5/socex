@@ -35,12 +35,12 @@
     <ion-list>
         <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
           <ion-thumbnail (click)="LocateInMap(l)" item-start>
-            <img style="width: 100px;height: auto;" src="{{l.informacion.logo}}">
+            <img style="width: 100px;height: auto;" src="{{l.logo}}">
           </ion-thumbnail>
-          <button ion-button class="boton33" clear (click)="Points(l)">{{l.informacion.puntos}}</button>
+          <button ion-button class="boton33" clear (click)="Points(l)">{{l.puntos}}</button>
           <button ion-button class="boton33" (click)="Invite(l)">invitar</button>
           <button ion-button class="boton33" (click)="LocalDetails(l)" clear>
-            {{l.informacion.tope_max_desc}} + {{l.informacion.tope_max_primera_vent}}
+            {{l.tope_max_desc}} + {{l.tope_max_primera_vent}}
           </button>
         </ion-item>
     </ion-list>
@@ -58,7 +58,7 @@
               Teléfono: <br>
             </ion-col>
             <ion-col>
-              {{selectedLocal?.informacion.fono}}
+              {{selectedLocal?.fono}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -66,7 +66,7 @@
               Página web:
             </ion-col>
             <ion-col>
-              {{selectedLocal?.informacion.web}}
+              {{selectedLocal?.web}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -74,7 +74,7 @@
               Nombre encargado:
             </ion-col>
             <ion-col>
-              {{selectedLocal?.informacion.encargado}}
+              {{selectedLocal?.encargado}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -82,7 +82,7 @@
               Vigencia de puntos:
             </ion-col>
             <ion-col>
-              {{selectedLocal?.informacion.vencimiento_punto}}
+              {{selectedLocal?.vencimiento_punto}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -90,7 +90,7 @@
               Máximo descuento: 
             </ion-col>
             <ion-col>
-              {{selectedLocal?.informacion.tope_max_desc}}%
+              {{selectedLocal?.tope_max_desc}}%
             </ion-col>
           </ion-row>
           <ion-row>
@@ -98,7 +98,7 @@
               Desc. en 1ra venta:
             </ion-col>
             <ion-col>
-              {{selectedLocal?.informacion.tope_max_primera_vent}}%
+              {{selectedLocal?.tope_max_primera_vent}}%
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -107,14 +107,14 @@
 
     <h3 style="text-align: center;">Horario de atención</h3>
     <ion-list>
-        <ion-item *ngFor="let d of selectedLocal?.informacion.restricciones">
+        <ion-item *ngFor="let d of selectedLocal?.restricciones">
 
           <div style="width: 50%;float: left;">
             <ion-icon color="success" class="dayIcon" name="checkmark-circle"></ion-icon>
             {{d.dia}}:
           </div>
           <div style="width: 50%;float: left;padding-top: 6px;">
-            {{d.inicio}} - {{d.final}}
+            {{d.inicio}}  {{d.final? ' y '+d.final: ''}}
           </div>
 
         </ion-item>

@@ -13,10 +13,9 @@
 
 
 "invitations" :[{
-    "tipo" : "tipo invitacion",
+    "tipo" : "estado",
     "dias_espera"     : 4,
     "fecha_eviada"    : "2018-07-01",
-    "fecha_respuesta" : "2018-07-17",
     "punto_obtenidos" : 1000,
     "aceptada"        : false,
     "cantacto" : {
@@ -108,46 +107,45 @@
 
 
 "locales": [{
-        "informacion":{
-          "nombre"                : "Itallissimo",
-          "logo"                  : "assets/imgs/locales/italissimo.png", 
-          "web"                   : "",
-          "fono"                  : "600 200 4500",
-          "encargado"             : "Jose Pable Undurraga",
-          "puntos"                : 3000,
-          "vencimiento_punto"     : "2018-09-18",
-          "tope_max_desc"         : 20,
-          "tope_max_primera_vent" : 40,
-          "restricciones" : [{
-              "dia"     : "Lunes",
-              "inicio" : "10:00",
-              "final"  : "21:00"
-              },{
-              "dia"     : "Martes",
-              "inicio" : "10:00",
-              "final"  : "21:00"
-              },{
-              "dia"     : "Miércoles",
-              "inicio" : "10:00",
-              "final"  : "21:00"
-              },{
-              "dia"     : "Jueves",
-              "inicio" : "10:00",
-              "final"  : "21:00"
-              },{
-              "dia"     : "Viernes",
-              "inicio" : "10:00",
-              "final"  : "21:00"
-              },{
-              "dia"     : "Sábado",
-              "inicio" : "10:00",
-              "final"  : "21:00"
-              },{
-              "dia"     : "Domingo",
-              "inicio" : "cerrado",
-              "final"  : "cerrado"
-          }] 
-        },
+        "id"                    : 0,
+        "nombre"                : "Itallissimo",
+        "logo"                  : "assets/imgs/locales/italissimo.png", 
+        "web"                   : "",
+        "fono"                  : "600 200 4500",
+        "encargado"             : "Jose Pable Undurraga",
+        "puntos"                : 3000,
+        "vencimiento_punto"     : "2018-09-18",
+        "tope_max_desc"         : 20,
+        "tope_max_primera_venta" : 40,
+        "restricciones" : [{
+            "dia"     : "Lunes",
+            "inicio" : "10:00",
+            "final"  : "21:00"
+            },{
+            "dia"     : "Martes",
+            "inicio" : "10:00",
+            "final"  : "21:00"
+            },{
+            "dia"     : "Miércoles",
+            "inicio" : "10:00",
+            "final"  : "21:00"
+            },{
+            "dia"     : "Jueves",
+            "inicio" : "10:00",
+            "final"  : "21:00"
+            },{
+            "dia"     : "Viernes",
+            "inicio" : "10:00",
+            "final"  : "21:00"
+            },{
+            "dia"     : "Sábado",
+            "inicio" : "10:00",
+            "final"  : "21:00"
+            },{
+            "dia"     : "Domingo",
+            "inicio" : "cerrado",
+            "final"  : "cerrado"
+        }] 
         "sucursales":[{
           "id": 0,
           "center": true,

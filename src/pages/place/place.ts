@@ -2,13 +2,10 @@ import { Component, ViewChild, Pipe, PipeTransform, ElementRef } from '@angular/
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 
-//import { Local, Invitation } from '../../interfaces/models';
 import { PointsPage } from '../points/points';
 import { InfolocalPage } from '../infolocal/infolocal';
 
 import { UserData } from '../../providers/user-data';
-//import { UserData } from '../../providers/locales-data';
-//import { UserData } from '../../providers/invitations-data';
 
 
 
@@ -25,7 +22,7 @@ export class FilterLocalesrPipe implements PipeTransform {
             return [];  
         }  
         return items.filter(item => (
-          item.informacion.nombre.toLowerCase().indexOf(name) >= 0
+          item.nombre.toLowerCase().indexOf(name) >= 0
         ));  
     }  
 }  
@@ -69,24 +66,29 @@ export class PlacePage {
       }else{
         this.localsData.getLocales().subscribe((mapData: any) => {
           this.allLocales = mapData;
-          console.log('locales list: '+this.allLocales);
+
+          this.allLocales[0].sucursales[0].lng = parseFloat(this.allLocales[0].sucursales[0].lng);
+          this.allLocales[0].sucursales[0].lat = parseFloat(this.allLocales[0].sucursales[0].lat);
+          console.log('locales list: '+JSON.stringify(this.allLocales[0].sucursales[0]));
 
           let mapEle = this.mapElement.nativeElement;
           let map = new google.maps.Map(mapEle, {
-            center: this.allLocales[0].sucursales[0].ubicacion,
+            center: this.allLocales[0].sucursales[0],
             zoom: 16
           });
         
           this.allLocales.forEach((localData: any) => {
-            console.log(JSON.stringify(localData.informacion.restricciones));
+            console.log(JSON.stringify(localData.restricciones));
             localData.sucursales.forEach((sucursal: any) => {
+                sucursal.lng = sucursal.lng instanceof Number? sucursal.lng: parseFloat(sucursal.lng);
+                sucursal.lat = sucursal.lat instanceof Number? sucursal.lat: parseFloat(sucursal.lat);
                 let infoWindow = new google.maps.InfoWindow({
-                  content: `<h5>${localData.informacion.nombre}</h5>`
+                  content: `<h5>${localData.nombre}</h5><p>${sucursal.direccion}</p>`
                 });
                 let marker = new google.maps.Marker({
-                  position: sucursal.ubicacion,
+                  position: sucursal,
                   map: map,
-                  title: localData.informacion.nombre
+                  title: localData.nombre
                 });
                 marker.addListener('click', () => {
                   infoWindow.open(map, marker);

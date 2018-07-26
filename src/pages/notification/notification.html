@@ -38,10 +38,10 @@
 		  <ion-item *ngFor="let n of notifications | filterNotifications: filter as filteredLocales">
 		  	<ion-label>
 			  	<h2>{{n.recept}}</h2>
-		    	  <p text-wrap>{{n.contenido}}<br>
-            <ion-icon [hidden]="n.estado" name="mail"></ion-icon>
-            <ion-icon [hidden]="!n.estado" name="mail-open"></ion-icon>
-            <ion-icon name="time"></ion-icon> {{n.tiempo_noti}}
+		    	  <p text-wrap>{{n.contenido}} {{n.empresa}}<br>
+            <ion-icon [hidden]="n.leida" name="mail"></ion-icon>
+            <ion-icon [hidden]="!n.leida" name="mail-open"></ion-icon>
+            <ion-icon name="time"></ion-icon> {{ getTimeAgo(n.tiempo_noti)}}
           </p>
 
   			

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ToastController } from 'ionic-angular';
 import { UserData } from '../../providers/user-data';
+import { Welcome } from '../welcome/welcome';
 
 /**
  * Generated class for the ConfigurationPage page.
@@ -17,7 +18,7 @@ import { UserData } from '../../providers/user-data';
 export class ConfigurationPage {
 	user: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public userData: UserData) {  	
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public userData: UserData, public toastCtrl: ToastController) {  	
     this.user = userData.getUser();
   }
 
@@ -26,9 +27,14 @@ export class ConfigurationPage {
   }
 
   logout(){
-    //Api Token Logout 
-    const root = this.app.getRootNav();
-    root.popToRoot();
+    this.userData.logout();
+    this.navCtrl.setRoot(Welcome);
+      const toast = this.toastCtrl.create({
+        message:  'Sesión finalizada',
+        position: 'top',
+        duration: 3000
+      });
+      toast.present();
   }
 
 }

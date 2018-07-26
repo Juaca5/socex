@@ -18,7 +18,7 @@
       <ion-avatar item-start>
         <img style="width: 120px; height: 120px;" src="assets/imgs/user.png">
       </ion-avatar>
-      <h2>{{user.name}}</h2>
+      <h2>{{user.nombres}} {{user.paterno}} {{user.materno}}</h2>
       <p>{{user.email}}</p>
     </ion-item>
   </ion-list>
@@ -37,7 +37,7 @@
   	</ion-item>
     <ion-item>
   	  <ion-label fixed>Teléfono:</ion-label>
-  	  <ion-input type="phone" [(ngModel)]="user.phone"></ion-input>
+  	  <ion-input type="phone" [(ngModel)]="user.telefono"></ion-input>
   	</ion-item>
 
     <ion-item>
@@ -51,7 +51,7 @@
     </ion-list-header>
     <ion-item>
   	  <ion-label>Enviar notificaciones a Email</ion-label>
-  	  <ion-checkbox [(ngModel)]="user.mailNotifications" color="primary" item-end></ion-checkbox>
+  	  <ion-checkbox [(ngModel)]="user.recibir_mail" color="primary" item-end></ion-checkbox>
   	</ion-item>
     <ion-item>
   	  <ion-label fixed>Contraseña:</ion-label>

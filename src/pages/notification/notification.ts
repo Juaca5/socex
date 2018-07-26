@@ -1,5 +1,5 @@
 import { Component, Pipe, PipeTransform } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { UserData } from '../../providers/user-data';
 
@@ -33,8 +33,9 @@ export class NotificationPage {
   deleteAll: boolean = false;
   enabledSelectAll = true;
   notificationsEnabled = true;
+  toastVisible = false;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: UserData) {  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public confData: UserData, public toastCtrl: ToastController) {  }
 
 
   ionViewDidLoad() {
@@ -101,11 +102,16 @@ export class NotificationPage {
 
 
   dimissNotifications(){
-    	for (let i = this.notifications.length - 1; i >= 0; i--) {
-    		if(this.notifications[i].isChecked){
-          this.confData.deleteNotification(this.notifications[i]);
-    		}
-    	}
+      for (let i = this.notifications.length - 1; i >= 0; i--) {
+        if(this.notifications[i].isChecked){
+          this.confData.deleteNotification(this.notifications[i]).subscribe((result: any) => {
+              this.presentToast(result.message)
+              if(result.type == 'success'){
+                  this.notifications.splice(i, 1);
+              }
+          });
+        }
+      }
       this.UnselectAll();
   }
 
@@ -113,7 +119,16 @@ export class NotificationPage {
   ReadNotifications(){
       for (let i = this.notifications.length - 1; i >= 0; i--) {
         if(this.notifications[i].isChecked){
-          this.notifications[i].estado = true;
+          this.notifications[i].leida = true;
+          this.confData.LeerNotification(this.notifications[i]).subscribe((result: any) => {
+              if(result.type == 'error'){
+                this.notifications[i].leida = false;
+              }else{
+                this.notifications[i].isChecked = false;
+                this.notifications[i].leida = true;
+              }
+              this.presentToast(result.message)
+          });
         }
       }
       this.UnselectAll();
@@ -125,5 +140,48 @@ export class NotificationPage {
     this.UnselectAll();
   }
 
+
+  getTimeAgo(time) {
+    let date = new Date(time);
+    let now  = new Date();
+    let diff = new Date(now.getTime() - date.getTime());
+
+    let ago = '';
+    if(diff.getFullYear() > 1970){
+       ago = diff.getFullYear() + ' años';
+    } else if(diff.getMonth() > 1){
+       ago = diff.getMonth() + ' meses';
+    } else if(diff.getMonth() == 1){
+       ago = diff.getMonth() + ' mes';
+    }else if(diff.getDate() > 1 ){
+       ago = diff.getDate() + ' dias';    
+    } else if(diff.getHours() > 1){
+       ago = diff.getHours() + ' horas';    
+    } else if(diff.getHours() == 1){
+       ago = diff.getHours() + ' hora';    
+    } else if(diff.getMinutes() > 1){
+       ago = diff.getMinutes() + ' minutos';    
+    } else if(diff.getMinutes() == 1){
+       ago = diff.getMinutes() + ' minuto';    
+    }else if(diff.getSeconds() > 1){
+       ago = diff.getSeconds() + ' segundos';    
+    }
+    return ago;
+  }
+
+  presentToast(message) {
+    if(!this.toastVisible){
+      this.toastVisible = true;
+      const toast = this.toastCtrl.create({
+        message:  message,
+        position: 'top',
+        duration: 3000
+      });
+      toast.onDidDismiss(() => {
+        this.toastVisible = false;
+      });
+      toast.present();
+    }
+  }
 
 }
