@@ -12,11 +12,11 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UserData {
 
-  URL_base: string  = 'http://31.220.104.182';//'https://backendsocex.herokuapp.com';
-  URL_login: string = this.URL_base+'/socex_backend/API_Login';
-  URL_data:  string = this.URL_base+'/socex_backend/API_Data';
-  URL_Noti:  string = this.URL_base+'/socex_backend/API_Notifications';
-  URL_Invi:  string = this.URL_base+'/socex_backend/API_Invitations';
+  URL_base: string  = 'http://pace.uv.cl/socex_backend/index.php';//'http://localhost';//'http://31.220.104.182';
+  URL_login: string = this.URL_base+'/API_Login';
+  URL_data:  string = this.URL_base+'/API_Data';
+  URL_Noti:  string = this.URL_base+'/API_Notifications';
+  URL_Invi:  string = this.URL_base+'/API_Invitations';
 
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';

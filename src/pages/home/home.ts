@@ -63,11 +63,7 @@ export class HomePage {
   }
   
   openContactFriends(){
-
-    t
-
-    var modalPage = this.modalCtrl.create('ModalPage'); modalPage.present(); 
-    
+    var modalPage = this.modalCtrl.create('ModalPage'); modalPage.present();    
   }
 }
 
