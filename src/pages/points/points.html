@@ -7,32 +7,22 @@
   
   <ion-content>
 
-  <ion-scroll scrollY="false">
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-            <div>
-            </div>
-          </ion-col>
-          <ion-col col-6>
-            <div>
-                <img src='{{selectedLocal?.logo}}'/>
-                <img style="width: 100px;height: auto;" src="{{selectedLocal.logo}}">
-            </div>
-          </ion-col>
-          <ion-col>
-            <div>
-            </div>
-          </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-scroll scrollY="false" class="noScroll">
+    <a class="pageLink" (click)="LocalDetails()">+Info Local</a>
+    <a class="pageLinkright" (click)="backToPlace()">Seleccionar<br>otro Local</a>
+    <div class="centerform" center text-center>
+          <img src="{{selectedLocal?.logo}}" style="height: auto;padding: 15px;" />
+    </div>
+    <div center col-12>
+          <ion-list>
+            <ion-label text-center class="color_aux">Cartola de pesos</ion-label>
+            <ion-label text-center class="color_aux">Puntos disponibles al {{today | date: 'dd/MM/yyyy'}}</ion-label>
+            <ion-label text-center class="color_aux pointsLabel">{{selectedLocal?.pesos | currency:'$':'symbol':'1.0-0'}}</ion-label>          
+          </ion-list>    
+    </div>
   </ion-scroll>
   
-
-    <h6 text-center class="color_aux">Cartola de pesos</h6>
-    <h6 text-center class="color_aux">Puntos disponibles al 28/07/2018</h6>
-    <h4 text-center class="color_aux">{{selectedLocal?.puntos}}</h4>
-    <div>
+  <div>
         <!--
            Embed the ngx-datatable component with following property bindings/values:
            1. sorttype - allow data to be sorted on multiple columns
@@ -57,6 +47,6 @@
         [columnMode]="'force'"
         >
       </ngx-datatable>
-    </div>
+  </div>
 
-  </ion-content>
+</ion-content>

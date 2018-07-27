@@ -32,12 +32,12 @@
     <ion-list>
         <ion-item *ngFor="let l of allLocales | filterLocales: filter as filteredLocales">
           <ion-thumbnail (click)="LocateInMap(l)" item-start>
-            <img style="width: 100px;height: auto;" src="{{l.logo}}">
+            <img class="localLogo" src="{{l.logo}}">
           </ion-thumbnail>
-          <button ion-button class="boton33" clear (click)="Points(l)">{{l.puntos}}</button>
+          <button ion-button class="boton33" clear (click)="Points(l)">{{l.pesos | currency:'$':'symbol':'1.0-0'}}</button>
           <button ion-button class="boton33" (click)="Invite(l)">invitar</button>
           <button ion-button class="boton33" (click)="LocalDetails(l)"clear>
-            {{l.tope_max_desc}} + {{l.tope_max_primera_vent}}
+            {{l.acumula_user}} + {{l.acumula_amigo}}
           </button>
         </ion-item>
     </ion-list>

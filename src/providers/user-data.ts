@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http'; //, Headers, RequestOptions
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
@@ -79,6 +79,10 @@ export class UserData {
           sucursal.lng                    = parseFloat(sucursal.lng);
           sucursal.lat                    = parseFloat(sucursal.lat);
           sucursal.cartola                = localData.cartola;
+          sucursal.acumula_user           = localData.acumula_user;
+          sucursal.acumula_amigo          = localData.acumula_amigo;
+          sucursal.vigencia_pesos         = localData.vigencia_pesos;
+          sucursal.pesos                  = localData.cartola.length? localData.cartola[0].saldo : 0;
       });
     });
 

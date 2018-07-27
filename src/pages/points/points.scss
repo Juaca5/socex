@@ -1,8 +1,36 @@
 page-points {
 
-    .color_aux{
-        color:#868686;
+    .noScroll{
+      height: 220px;
     }
+
+    .centerform{
+      width: 200px;
+      margin: 0px calc(50% - 100px);
+    }
+    .sideform{
+      width: calc(50% - 100px);
+    }
+
+    .pageLink{
+        position: absolute;
+        top: 30px;
+        left: 8px;
+    }
+    .pageLinkright{
+        position: absolute;
+        top: 30px;
+        right: 8px;
+    }
+
+    .color_aux{
+      margin: 5px 0px;
+      color:#868686;
+    }
+    .pointsLabel{
+      font-size: 40px;      
+    }
+
     .center_img {
         margin-left: auto;
         margin-right: auto;
@@ -87,5 +115,16 @@ page-points {
    .datatable-icon-prev:before {
       content: "<<";
    }
+
+
+  .ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
+    color: #eee!important;
+    font-weight: 300!important;
+  }
+
+  .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell {
+    font-size: 12px!important;
+    text-align: center!important;
+  }
 
 }

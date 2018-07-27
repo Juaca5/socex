@@ -8,7 +8,13 @@
   <ion-card class="localDetail">
     <img src="{{selectedLocal?.logo}}"/>
     <ion-card-content  style="border: 1px solid #ccc; border-right: none; border-left: none;">
-        <h2 style="text-align: center;">Información</h2>
+        <h2 style="text-align: center;">INFORMACIÓN</h2>
+        <p class="info">
+          <a class="infoIcon infoIcon1">{{selectedLocal?.acumula_user}}%</a> acumulas cuando tu amigo nos visita
+        </p>
+        <p class="info">
+          <a class="infoIcon infoIcon2">{{selectedLocal?.acumula_amigo}}%</a> de descuento para tu amigo cuando nos visita
+        </p>
         <ion-grid>
           <ion-row>
             <ion-col>
@@ -36,10 +42,10 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              Vigencia de puntos:
+              Vigencia de pesos:
             </ion-col>
             <ion-col>
-              {{selectedLocal?.vencimiento_punto}}
+              {{selectedLocal?.vigencia_pesos}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -62,7 +68,7 @@
     </ion-card-content>
 
 
-    <h2 style="text-align: center;">Horario de atención</h2>
+    <h2 style="text-align: center;">HORARIO DE ATENCIÓN</h2>
     <ion-list>
         <ion-item *ngFor="let d of selectedLocal?.restricciones">
           <ion-icon color="success" class="dayIcon" name="checkmark-circle" item-start></ion-icon>
