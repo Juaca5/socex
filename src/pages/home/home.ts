@@ -29,6 +29,10 @@ export class HomePage {
   ionViewDidEnter() {
     console.log('ionViewDidEnter HomePage');
     this.notisData.getNotifications().subscribe((notifications: any) => {
+      if(notifications instanceof String){
+        this.showError();
+        return;
+      }
       let count = 0;
       for (var i = 0; i < notifications.length; i++) {
         if( !notifications[i].viewed ){
@@ -59,6 +63,15 @@ export class HomePage {
       title: 'Función no disponible',
       subTitle: 'Esta funcionalidad aún no está disponible',
       buttons: ['Aceptar']
+    });
+    alert.present();
+  }
+
+  showError(){
+    let alert = this.alertCtrl.create({
+      title: 'Alerta',
+      subTitle: 'No se logoró conectar con el servidor',
+      buttons: ['Reintentar']
     });
     alert.present();
   }

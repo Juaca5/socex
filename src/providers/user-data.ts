@@ -60,46 +60,54 @@ URL_base: string  = 'http://socex-backend.esy.es/socex_backend/socex_backend/ind
   }
 */
   processData(data: any) {
-    this.data = data.json();
-    
-    this.data.notifications.forEach((n: any) => {
-      n.leida = n.leida == "1"; 
-    });
-
-    this.data.locales.forEach((localData: any) => {
-      localData.sucursales.forEach((sucursal: any) => {
-          sucursal.idEmpresa              = localData.id,
-          sucursal.empresa                = localData.nombre;
-          sucursal.encargado              = localData.encargado;
-          sucursal.fono                   = localData.fono;
-          sucursal.logo                   = localData.logo;
-          sucursal.puntos                 = localData.puntos;
-          sucursal.restricciones          = localData.restricciones;
-          sucursal.tope_max_desc          = localData.tope_max_desc;
-          sucursal.tope_max_primera_venta = localData.tope_max_primera_venta;
-          sucursal.web                    = localData.web;
-          sucursal.lng                    = parseFloat(sucursal.lng);
-          sucursal.lat                    = parseFloat(sucursal.lat);
-          sucursal.cartola                = localData.cartola;
-          sucursal.acumula_user           = localData.acumula_user;
-          sucursal.acumula_amigo          = localData.acumula_amigo;
-          sucursal.vigencia_pesos         = localData.vigencia_pesos;
-          sucursal.pesos                  = localData.cartola.length? localData.cartola[0].saldo : 0;
+    this.data = null;
+    try{
+      this.data = data.json();
+      
+      this.data.notifications.forEach((n: any) => {
+        n.leida = n.leida == "1"; 
       });
-    });
-
-    return this.data;
+      this.data.locales.forEach((localData: any) => {
+        localData.sucursales.forEach((sucursal: any) => {
+            sucursal.idEmpresa              = localData.id,
+            sucursal.empresa                = localData.nombre;
+            sucursal.encargado              = localData.encargado;
+            sucursal.fono                   = localData.fono;
+            sucursal.logo                   = localData.logo;
+            sucursal.puntos                 = localData.puntos;
+            sucursal.restricciones          = localData.restricciones;
+            sucursal.tope_max_desc          = localData.tope_max_desc;
+            sucursal.tope_max_primera_venta = localData.tope_max_primera_venta;
+            sucursal.web                    = localData.web;
+            sucursal.lng                    = parseFloat(sucursal.lng);
+            sucursal.lat                    = parseFloat(sucursal.lat);
+            sucursal.cartola                = localData.cartola;
+            sucursal.acumula_user           = localData.acumula_user;
+            sucursal.acumula_amigo          = localData.acumula_amigo;
+            sucursal.vigencia_pesos         = localData.vigencia_pesos;
+            sucursal.pesos                  = localData.cartola.length? localData.cartola[0].saldo : 0;
+        });
+      });
+    }catch(e){
+      return e.message;
+    }
+   return this.data;
   }
   processLogin(user: any) { // el servidor retorna un objeto json user: {...} o un objeto null.
-    let userdata = user.json();
-    this.user = userdata.user;
-    if(this.user){
-      this.user.recibir_mail = this.user.recibir_mail == "1"; 
-      
-      this.storage.set(this.HAS_LOGGED_IN, true);
-      this.storage.set('user', this.user);
-      this.events.publish('user:login');
-      console.log('login sucess: '+ JSON.stringify(this.user));
+    this.user = null; 
+    try{
+      let userdata = user.json();
+      this.user = userdata.user;
+      if(this.user){
+        this.user.recibir_mail = this.user.recibir_mail == "1"; 
+        
+        this.storage.set(this.HAS_LOGGED_IN, true);
+        this.storage.set('user', this.user);
+        this.events.publish('user:login');
+        console.log('login sucess: '+ JSON.stringify(this.user));
+      }
+    }catch(e){
+      return false;
     }
     return this.user != null;
   }
