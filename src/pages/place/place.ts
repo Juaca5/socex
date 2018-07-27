@@ -2,6 +2,7 @@ import { Component, ViewChild, Pipe, PipeTransform, ElementRef } from '@angular/
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { ContactPage } from '../contact/contact';
 
+import { ListplacePage } from '../listplace/listplace';
 import { PointsPage } from '../points/points';
 import { InfoPage } from '../info/info';
 
@@ -17,13 +18,18 @@ declare var google: any;
 })  
 export class FilterLocalesrPipe implements PipeTransform {  
     transform(items: any[], filter: any): any {  
-      var name = filter.name.toLowerCase();
-        if (!items || !filter) {  
-            return [];  
-        }  
-        return items.filter(item => (
-          item.nombre.toLowerCase().indexOf(name) >= 0
-        ));  
+        var array = [];
+        var name = filter.name.toLowerCase();
+        if (items && filter) {  
+          for (var i = 0; i < items.length; i++) {
+            if(!name || items[i].nombre.toLowerCase().indexOf(name)){
+              for (var j = 0; j < items[i].sucursales.length; j++) {
+                array.push(items[i].sucursales[j]);
+              }
+            }
+          }
+        }
+        return array;
     }  
 }  
 
@@ -40,7 +46,7 @@ export class FilterLocalesrPipe implements PipeTransform {
 })
 
 export class PlacePage {
-  
+  map: any;
   queryText: String = '';
   filter: any = {name: '', location: '', hasResult: true};
   allLocales: Array<any> = [];
@@ -55,48 +61,32 @@ export class PlacePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PlacePage');
-    this.selectedLocal = this.navParams.get('local');
 
-
-      if (this.selectedLocal){
-        this.selectedLocal = this.navParams.get('local');
-        console.log('local details '+this.selectedLocal);
-
-      }else{
         this.localsData.getLocales().subscribe((mapData: any) => {
           this.allLocales = mapData;
-
-          this.allLocales[0].sucursales[0].lng = parseFloat(this.allLocales[0].sucursales[0].lng);
-          this.allLocales[0].sucursales[0].lat = parseFloat(this.allLocales[0].sucursales[0].lat);
-          console.log('locales list: '+JSON.stringify(this.allLocales[0].sucursales[0]));
-
           let mapEle = this.mapElement.nativeElement;
-          let map = new google.maps.Map(mapEle, {
+          this.map = new google.maps.Map(mapEle, {
             center: this.allLocales[0].sucursales[0],
             zoom: 16
           });
         
           this.allLocales.forEach((localData: any) => {
-            console.log(JSON.stringify(localData.restricciones));
             localData.sucursales.forEach((sucursal: any) => {
-                sucursal.lng = sucursal.lng instanceof Number? sucursal.lng: parseFloat(sucursal.lng);
-                sucursal.lat = sucursal.lat instanceof Number? sucursal.lat: parseFloat(sucursal.lat);
                 let infoWindow = new google.maps.InfoWindow({
                   content: `<h5>${localData.nombre}</h5><p>${sucursal.direccion}</p>`
                 });
                 let marker = new google.maps.Marker({
                   position: sucursal,
-                  map: map,
+                  map: this.map,
                   title: localData.nombre
                 });
                 marker.addListener('click', () => {
-                  infoWindow.open(map, marker);
+                  infoWindow.open(this.map, marker);
                 });
             });
           });
 
-          google.maps.event.addListenerOnce(map, 'idle', () => {
+          google.maps.event.addListenerOnce(this.map, 'idle', () => {
             mapEle.classList.add('show-map');
           });
         });
@@ -106,7 +96,6 @@ export class PlacePage {
           this.invitations = data;
           console.log('invitations: '+this.invitations);
         });
-      }
 
   }
 
@@ -115,7 +104,7 @@ export class PlacePage {
   }
   
   LocalDetails(local){
-      this.navCtrl.setRoot(PlacePage, {
+      this.navCtrl.setRoot(ListplacePage, {
         local: local
       });
   }
@@ -131,9 +120,9 @@ export class PlacePage {
     });
   }
 
-  LocateInMap(local){
+  LocateInMap(sucursal){
     if(this.OnMap == '0'){
-      console.log('locateInMap!');
+      this.map.panTo(sucursal);
     }
   }
   

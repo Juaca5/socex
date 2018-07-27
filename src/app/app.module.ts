@@ -41,6 +41,7 @@ import { FilterLocalesrPipe } from '../pages/place/place';
 import { PointsPage } from '../pages/points/points';
 import { ContactPage } from '../pages/contact/contact';
 import { InfoPage } from '../pages/info/info';
+import { ListplacePage } from '../pages/listplace/listplace';
 /*
  * pages link notify
  * |--- notification -- filter notify
@@ -82,6 +83,7 @@ import { InvitationsData } from '../providers/invitations-data';
     InfoPage,
     PlacePage,
     PointsPage,
+    ListplacePage,
     NotificationPage,
     ConfigurationPage,
     ContactfriendsPage,
@@ -112,6 +114,7 @@ import { InvitationsData } from '../providers/invitations-data';
     CustomersupportPage,
     PlacePage,
     PointsPage,
+    ListplacePage,
     NotificationPage,
     ConfigurationPage,
     TabsPage

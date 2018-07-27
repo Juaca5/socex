@@ -14,12 +14,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'listplace.html',
 })
 export class ListplacePage {
-
+  selectedLocal: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListplacePage');
+    this.selectedLocal = this.navParams.get('local');
   }
 
 }

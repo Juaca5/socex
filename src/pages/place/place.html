@@ -8,7 +8,7 @@
   <ion-navbar hideBackButton="true">
 	  <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
   </ion-navbar>
-  <ion-toolbar no-border-top [hidden]="selectedLocal">
+  <ion-toolbar no-border-top>
     <ion-searchbar color="primary"
                    [(ngModel)]="queryText"
                    (ionInput)="updateLocales()"
@@ -16,7 +16,7 @@
     </ion-searchbar>
   </ion-toolbar>
   <!-- Segment buttons with icons -->
-  <ion-segment [hidden]="selectedLocal" [(ngModel)]="OnMap" color="secondary">
+  <ion-segment [(ngModel)]="OnMap" color="secondary">
     <ion-segment-button value='0' class="font_segment">
       Mapa
     </ion-segment-button>
@@ -26,7 +26,7 @@
   </ion-segment>
 </ion-header>
 
-<ion-content [hidden]="selectedLocal" id="localesList">
+<ion-content id="localesList">
   <div id="map_canvas" [hidden]="OnMap == 1" #mapCanvas  ion-fixed></div>
   <div  [ngClass]="{'OnMapToolbar': OnMap == '0', 'NoMapToolbar': OnMap == '1'}" >   
     <ion-list>
@@ -42,80 +42,4 @@
         </ion-item>
     </ion-list>
   </div>
-</ion-content>
-
-<ion-content [hidden]="!selectedLocal" class="localDetail">
-  <ion-card>
-    <img src="{{selectedLocal?.logo}}"/>
-    <ion-card-content  style="border: 1px solid #ccc; border-right: none; border-left: none;">
-        <h3 style="text-align: center;">Información</h3>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              Teléfono: <br>
-            </ion-col>
-            <ion-col>
-              {{selectedLocal?.fono}}
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              Página web:
-            </ion-col>
-            <ion-col>
-              {{selectedLocal?.web}}
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              Nombre encargado:
-            </ion-col>
-            <ion-col>
-              {{selectedLocal?.encargado}}
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              Vigencia de puntos:
-            </ion-col>
-            <ion-col>
-              {{selectedLocal?.vencimiento_punto}}
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              Máximo descuento: 
-            </ion-col>
-            <ion-col>
-              {{selectedLocal?.tope_max_desc}}%
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              Desc. en 1ra venta:
-            </ion-col>
-            <ion-col>
-              {{selectedLocal?.tope_max_primera_vent}}%
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-    </ion-card-content>
-
-
-    <h3 style="text-align: center;">Horario de atención</h3>
-    <ion-list>
-        <ion-item *ngFor="let d of selectedLocal?.restricciones">
-
-          <div style="width: 50%;float: left;">
-            <ion-icon color="success" class="dayIcon" name="checkmark-circle"></ion-icon>
-            {{d.dia}}:
-          </div>
-          <div style="width: 50%;float: left;padding-top: 6px;">
-            {{d.inicio}}  {{d.final? ' y '+d.final: ''}}
-          </div>
-
-        </ion-item>
-    </ion-list>
-
-  </ion-card>
 </ion-content>

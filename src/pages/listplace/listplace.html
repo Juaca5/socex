@@ -1,16 +1,81 @@
-<!--
-  Generated template for the ListplacePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-	<ion-navbar hideBackButton="true">
+  <ion-navbar hideBackButton="true">
 	  <ion-title mode='ios'><img src="assets/imgs/logosocex.png" class="img-responsive" /></ion-title>
-	</ion-navbar>
-  </ion-header>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="localDetail">
+    <img src="{{selectedLocal?.logo}}"/>
+    <ion-card-content  style="border: 1px solid #ccc; border-right: none; border-left: none;">
+        <h2 style="text-align: center;">Información</h2>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Teléfono: <br>
+            </ion-col>
+            <ion-col>
+              {{selectedLocal?.fono}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Página web:
+            </ion-col>
+            <ion-col>
+              {{selectedLocal?.web}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Nombre encargado:
+            </ion-col>
+            <ion-col>
+              {{selectedLocal?.encargado}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Vigencia de puntos:
+            </ion-col>
+            <ion-col>
+              {{selectedLocal?.vencimiento_punto}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Máximo descuento: 
+            </ion-col>
+            <ion-col>
+              {{selectedLocal?.tope_max_desc}}%
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Desc. en 1ra venta:
+            </ion-col>
+            <ion-col>
+              {{selectedLocal?.tope_max_primera_venta}}%
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card-content>
 
 
-<ion-content padding>
+    <h2 style="text-align: center;">Horario de atención</h2>
+    <ion-list>
+        <ion-item *ngFor="let d of selectedLocal?.restricciones">
+          <ion-icon color="success" class="dayIcon" name="checkmark-circle" item-start></ion-icon>
+          <div style="width: 40%;float: left;padding-top: 3px;">
+            {{d.dia}}:
+          </div>
+          <div style="width: 60%;float: left;padding-top: 3px;">
+            {{d.inicio}}  {{d.final? ' y '+d.final: ''}}
+          </div>
 
+        </ion-item>
+    </ion-list>
+
+  </ion-card>
 </ion-content>
+

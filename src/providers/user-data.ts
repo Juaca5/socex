@@ -58,11 +58,26 @@ export class UserData {
 */
   processData(data: any) {
     this.data = data.json();
+    
+    this.data.notifications.forEach((n: any) => {
+      n.leida = n.leida == "1"; 
+    });
 
-    for (var i = 0; i < this.data.notifications.length; i++) {
-      this.data.notifications[i].leida = this.data.notifications[i].leida == "1"; 
-      console.log(this.data.notifications[i].leida);
-    }
+    this.data.locales.forEach((localData: any) => {
+      localData.sucursales.forEach((sucursal: any) => {
+          sucursal.empresa                = localData.nombre;
+          sucursal.encargado              = localData.encargado;
+          sucursal.fono                   = localData.fono;
+          sucursal.logo                   = localData.logo;
+          sucursal.puntos                 = localData.puntos;
+          sucursal.restricciones          = localData.restricciones;
+          sucursal.tope_max_desc          = localData.tope_max_desc;
+          sucursal.tope_max_primera_venta = localData.tope_max_primera_venta;
+          sucursal.web                    = localData.web;
+          sucursal.lng                    = parseFloat(sucursal.lng);
+          sucursal.lat                    = parseFloat(sucursal.lat);
+      });
+    });
 
     return this.data;
   }
