@@ -67,7 +67,9 @@ export class PlacePage {
           let mapEle = this.mapElement.nativeElement;
           this.map = new google.maps.Map(mapEle, {
             center: this.allLocales[0].sucursales[0],
-            zoom: 16
+            zoom: 16,
+            mapTypeControl: false,
+            streetViewControl: false
           });
         
           this.allLocales.forEach((localData: any) => {
