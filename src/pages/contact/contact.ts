@@ -56,7 +56,7 @@ export class ContactPage {
         else if (invitations[i].estado == 'aceptada') {
           this.invitationsAccepted.push(invitations[i]);
         }
-        else if (invitations[i].estado == 'rechazada') {
+        else if (invitations[i].estado == 'cancelada') {
           this.invitationsRejected.push(invitations[i]);
         }
       }
@@ -101,7 +101,6 @@ export class ContactPage {
     this.invitationsData.cancelInvitation(inv).subscribe((response: any) => {
       console.log('cancel invitation: '+JSON.stringify(response));
       if(response.invitation){
-        this.newInvitation = {};
         this.invitationsSended.splice(n, 1);
         this.invitationsRejected.push(response.invitation);
         this.showAlert('Invitación cancelada!', 'La invitación fue cancelada. Puedes invitar a otra persona en su lugar');
