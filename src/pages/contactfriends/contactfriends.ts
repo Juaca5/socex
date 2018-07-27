@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the ContactfriendsPage page.
@@ -15,11 +15,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ContactfriendsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navParams: NavParams,
+    public navCtrl : NavController,
+    private viewCtrl : ViewController) {
   }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactfriendsPage');
+    let data = this.navParams.get('data');
+    console.log(data);
   }
 
+
+  closeModal(){
+    console.log("close modal click");
+    this.viewCtrl.dismiss();
+  }
 }

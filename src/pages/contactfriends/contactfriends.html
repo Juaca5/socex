@@ -5,14 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>contactfriends</ion-title>
-  </ion-navbar>
-
+	<ion-navbar hideBackButton="true">
+	  <ion-title mode='ios'>
+      <img center src="assets/imgs/logosocex.png" class="img-responsive" />
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">cerrar</button>
+    </ion-buttons>
+	</ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
 
+  <p>Contactar amigos mi washo</p>
+  
+
+
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-title> socex </ion-title>
+    </ion-toolbar>
+  </ion-footer>

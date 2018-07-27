@@ -5,6 +5,20 @@
         "pass" : "pass _user"
     },
 
+    "cartola" : {
+        "id_usuario" : "rut de usuario",
+        "id_local" : "el identificador del local",
+        "total_pesos " : "total de pesos acumulados",
+        "operacion" : [{
+            "fecha" : "fecha de la operacion",
+            "cuanta": "seria el valor de la boleta que pago",
+            "pago" : "lo que canselo usando o no puntos",
+            "pesos": "los puntos que sumo o gasto",
+            "saldo": "la diferencia de puntos que queda" 
+        }]
+    },
+    
+
     "notificaiones" :[{
         "tipo" : "tipo",
         "contenido" : "contenido",
