@@ -6,38 +6,89 @@
 
   
 <ion-content>
+  <a class="pageLink" (click)="LocalDetails()">+Info Local</a>
+  <a class="pageLinkright" (click)="backToPlace()">Seleccionar<br>otro Local</a>
     <div class="centerform" center text-center>
-          <img src="{{selectedLocal?.logo}}" class="img-responsive" />
+          <img src="{{selectedLocal?.logo}}" style="height: auto;padding: 15px;" />
           <ion-list>
-            <ion-label>Ingresa la información <br/>para invitar a tu amigo</ion-label>
-
+            <ion-label style="margin: 5px 0px 15px 0px!important;">Ingresa la información <br/>para invitar a tu amigo</ion-label>
+  
             <ion-item>
               <ion-label stacked>Nombre amigo/a</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="newInvitation.nombre_amigo"></ion-input>
             </ion-item>
           
             <ion-item>
               <ion-label stacked>Apellido amigo/a</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="newInvitation.apellidos_amigo"></ion-input>
             </ion-item>
 
             <ion-item>
                 <ion-label stacked>Rut amigo/a</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input type="text" [(ngModel)]="newInvitation.rut_amigo"></ion-input>
             </ion-item>
 
             <ion-item>
-              <button ion-button block color="primary" (click)="backToPlace()">Enviar</button>
+              <button ion-button block color="primary" (click)="sendInvitation()"  [hidden]="invitationsAccepted?.length >= 5">Enviar</button>
+              <p style="color: red;" [hidden]="invitationsAccepted?.length < 5" >Ya has enviado tus 5 invitaciones</p>
             </ion-item>
           
           </ion-list>    
     </div>
 
-    <ion-segment padding [(ngModel)]="mymodel" ion-text >
-        <ion-segment-button value="pending">Pendientes</ion-segment-button>
-        <ion-segment-button value="acepted">Aceptados</ion-segment-button>
-        <ion-segment-button value="notacepted">No aceptados</ion-segment-button>
+    <ion-segment padding [(ngModel)]="invitationsTable"  ion-text >
+        <ion-segment-button value="0">Pendientes</ion-segment-button>
+        <ion-segment-button value="1">Aceptados</ion-segment-button>
+        <ion-segment-button value="2">No aceptados</ion-segment-button>
     </ion-segment>
+
+
+          <ion-list [hidden]="invitationsTable != '0'">
+            <ion-item class="row th">
+              <div class="th num">N°</div>
+              <div class="th invitado">Nombre Apellido</div>
+              <div class="th column">Enviada</div>
+              <div class="th column">Días espera</div>
+            </ion-item>
+            <ion-item class="row" *ngFor="let i of invitationsSended; let n = index">
+              <div class="td num">{{n+1}}</div>
+              <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
+              <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
+              <div class="td column">{{getDaysAgo(i.fecha_enviada)}} 
+                <ion-icon class="cancel_button" name="ios-close-circle-outline" item-start></ion-icon>
+              </div>
+            </ion-item>
+          </ion-list>
+
+          <ion-list [hidden]="invitationsTable != '1'">
+            <ion-item class="row th">
+              <div class="th num">N°</div>
+              <div class="th invitado">Nombre Apellido</div>
+              <div class="th column">Enviada</div>
+              <div class="th column">Pesos</div>
+            </ion-item>
+            <ion-item class="row" *ngFor="let i of invitationsAccepted; let n = index">
+              <div class="td num">{{n+1}}</div>
+              <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
+              <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
+              <div class="td column">{{i.pesos}}</div>
+            </ion-item>
+          </ion-list>
+
+          <ion-list [hidden]="invitationsTable != '2'">
+            <ion-item class="row th">
+              <div class="th num">N°</div>
+              <div class="th invitado">Nombre Apellido</div>
+              <div class="th column">Enviada</div>
+              <div class="th column">No aceptado</div>
+            </ion-item>
+            <ion-item class="row" *ngFor="let i of invitationsRejected; let n = index">
+              <div class="td num">{{n+1}}</div>
+              <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
+              <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
+              <div class="td column">{{i.fecha_canelada | date: 'dd/MM/yyyy'}}</div>
+            </ion-item>
+          </ion-list>
 
 
 </ion-content>

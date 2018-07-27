@@ -12,7 +12,7 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UserData {
 
-  URL_base: string  = 'http://pace.uv.cl/socex_backend/index.php';//'http://localhost';//'http://31.220.104.182';
+  URL_base: string  = 'http://pace.uv.cl/socex_backend/index.php';//'http://localhost/socex_backend/index.php';//'http://31.220.104.182';
   URL_login: string = this.URL_base+'/API_Login';
   URL_data:  string = this.URL_base+'/API_Data';
   URL_Noti:  string = this.URL_base+'/API_Notifications';
@@ -26,22 +26,23 @@ export class UserData {
 
   constructor(public http: Http, public events: Events, public storage: Storage) {}
 
-  getRequestOptions() {
-    var headers = new Headers();
+//  getRequestOptions() {
+//    var headers = new Headers();
     /*headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
     headers.append('Accept','application/json');*/
-    headers.append('content-type','application/json');
-    let options = new RequestOptions({ headers:headers});// , withCredentials: true});
+//    headers.append('content-type','application/json');
+//    let options = new RequestOptions({ headers:headers});// , withCredentials: true});
 
-    return options;
-  }
+//    return options;
+//  } 
+//
   
   load(): any {
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return this.http.get(this.URL_data+'/'+this.user.rut+'/'+this.user.token, this.getRequestOptions())
+      return this.http.get(this.URL_data+'/'+this.user.rut+'/'+this.user.token)
         .map(this.processData, this);
     }
   }
@@ -65,6 +66,7 @@ export class UserData {
 
     this.data.locales.forEach((localData: any) => {
       localData.sucursales.forEach((sucursal: any) => {
+          sucursal.idEmpresa              = localData.id,
           sucursal.empresa                = localData.nombre;
           sucursal.encargado              = localData.encargado;
           sucursal.fono                   = localData.fono;
@@ -107,20 +109,26 @@ export class UserData {
     this.data = undefined;
     return this.getInvitations();
   }
-  addInvitation(inv: any): void {
-    // insert invitación en el servidor
-    this.data.invitations.push(inv);
+  sendInvitation(inv: any) {
+    return this.http.post(this.URL_Invi, {invitation: inv}).map(this.processInvitationResponse, this);
   };
-  removeInvitation(inv: any): void {
+  removeInvitation(inv: any) {
     inv.checked = true;
-    this.updateInvitation(inv);
     let index = this.data.invitations.indexOf(inv);
     if (index > -1) {
       this.data.invitations.splice(index, 1);
     }
   };
-  updateInvitation(inv: any): void {
+  updateInvitation(inv: any) {
     // modificar invitación en servidor
+  }
+  processInvitationResponse(data){
+    let response = data.json();
+    if (response.invitation) {
+       return {type: 'success', invitation: response.invitation};
+    } else {
+       return {type: 'error',   message: response.error};
+    }
   }
 
   // ==================== notifications ====================
@@ -137,7 +145,7 @@ export class UserData {
 
   addNotification(inv: any) {
     // insert invitación en el servidor
-    this.http.post(this.URL_Noti, {id: inv.id}, this.getRequestOptions()).subscribe( 
+    this.http.post(this.URL_Noti, {id: inv.id}).subscribe( 
         response => {
             this.data.notifications.push(inv);
         },
@@ -148,12 +156,12 @@ export class UserData {
   };
 
   deleteNotification(inv: any) {
-    return this.http.delete(this.URL_Noti+'/'+inv.id, this.getRequestOptions()).map(this.processNotificationResponse, this);
+    return this.http.delete(this.URL_Noti+'/'+inv.id).map(this.processNotificationResponse, this);
   };
 
   LeerNotification(inv: any) {
     inv.leida = true;
-    return this.http.put(this.URL_Noti, {invitation: inv}, this.getRequestOptions()).map(this.processNotificationResponse, this);
+    return this.http.put(this.URL_Noti, {invitation: inv}).map(this.processNotificationResponse, this);
   }
   processNotificationResponse(data: any){
     let response = data.json();
@@ -185,7 +193,7 @@ export class UserData {
   
   login(username: string, password: string) {
     console.log('login: '+username+', '+password);
-    return this.http.get(this.URL_login+'/'+username+'/'+password, this.getRequestOptions())
+    return this.http.get(this.URL_login+'/'+username+'/'+password)
         .map(this.processLogin, this);
   };
   
