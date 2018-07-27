@@ -24,9 +24,7 @@ export class ContactPage {
     this.invitationsTable = '0';
   }
 
-
-  ionViewDidLoad() {
-    this.selectedLocal = this.navParams.get('local');
+  resetNewInvitation(){
     this.newInvitation = {
       rut_amigo       : '',
       nombre_amigo    : '',
@@ -37,7 +35,10 @@ export class ContactPage {
       idEmpresa       : this.selectedLocal.idEmpresa,
       idLocal         : this.selectedLocal.id
     }
-
+  }
+  ionViewDidLoad() {
+    this.selectedLocal = this.navParams.get('local');
+    this.resetNewInvitation();
     this.invitationsData.getInvitations().subscribe((invitations: any) => {
       this.invitationsSended   = [];
       this.invitationsAccepted = [];
@@ -77,6 +78,7 @@ export class ContactPage {
   }
 
   sendInvitation() {
+    this.validateNewInvitation();
     this.invitationsData.sendInvitation(this.newInvitation).subscribe((response: any) => {
       console.log('send invitation: '+JSON.stringify(response));
       if(response.invitation){
@@ -86,7 +88,7 @@ export class ContactPage {
       }else{
         this.showAlert('Error!', response.message);        
       }
-      this.backToPlace();
+      this.resetNewInvitation();
     })
   }
 
@@ -96,6 +98,12 @@ export class ContactPage {
     var now  = new Date();
     let diff = new Date(now.getTime() - from.getTime());
     return diff.getDate();
+  }
+
+  validateNewInvitation(){
+      if(!this.newInvitation.rut_amigo || !this.newInvitation.nombre_amigo || !this.newInvitation.apellidos_amigo){
+        this.showAlert('Error!', 'Ingrese la información del amigo invitado por favor.');        
+      }
   }
 
 }

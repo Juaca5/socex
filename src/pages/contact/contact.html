@@ -46,7 +46,7 @@
           <ion-list [hidden]="invitationsTable != '0'">
             <ion-item class="row th">
               <div class="th num">N°</div>
-              <div class="th invitado">Invitado</div>
+              <div class="th invitado">Nombre Apellido</div>
               <div class="th column">Enviada</div>
               <div class="th column">Días espera</div>
             </ion-item>
@@ -54,14 +54,16 @@
               <div class="td num">{{n+1}}</div>
               <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
               <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
-              <div class="td column">{{getDaysAgo(i.fecha_enviada)}}</div>
+              <div class="td column">{{getDaysAgo(i.fecha_enviada)}} 
+                <ion-icon class="cancel_button" name="ios-close-circle-outline" item-start></ion-icon>
+              </div>
             </ion-item>
           </ion-list>
 
           <ion-list [hidden]="invitationsTable != '1'">
             <ion-item class="row th">
               <div class="th num">N°</div>
-              <div class="th invitado">Invitado</div>
+              <div class="th invitado">Nombre Apellido</div>
               <div class="th column">Enviada</div>
               <div class="th column">Pesos</div>
             </ion-item>
@@ -76,7 +78,7 @@
           <ion-list [hidden]="invitationsTable != '2'">
             <ion-item class="row th">
               <div class="th num">N°</div>
-              <div class="th invitado">Invitado</div>
+              <div class="th invitado">Nombre Apellido</div>
               <div class="th column">Enviada</div>
               <div class="th column">No aceptado</div>
             </ion-item>
