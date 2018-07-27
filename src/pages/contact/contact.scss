@@ -20,4 +20,63 @@ page-contact {
     	width: calc(50% - 100px);
     }
 
+    .pageLink{
+        position: absolute;
+        top: 30px;
+        left: 8px;
+    }
+    .pageLinkright{
+        position: absolute;
+        top: 30px;
+        right: 8px;
+    }
+
+
+
+    .row{
+        margin: 0px;
+        padding: 0px;
+        min-height: 30px;
+    }
+    .th, .td{
+        float: left;
+        text-align: center;
+    }
+
+    .th{
+        background-color: #e4e4e4;
+        font-size: 13px;
+    }
+
+    .td{
+        font-size: 11px;
+    }
+    
+    .num{
+        width: 30px;
+    }
+    .invitado{
+        width: calc(100% - 190px);
+        text-align: left;
+    }
+    .column{
+        width: 80px;
+    }
+
+    ion-label {
+        margin: 0px!important;
+    }
+
+    ion-segment {
+        padding: 16px 0px 0px 0px!important;
+    }
+    .segment-button {
+        color: #ffffff!important;
+        background-color: #848484!important;
+        opacity: 1!important;
+    }
+    .segment-button.activated, .segment-button.segment-activated{
+        background-color: #494949!important;
+    }
+
 }
