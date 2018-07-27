@@ -12,6 +12,7 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+
   invitationsAccepted: any;
   invitationsRejected: any;
   invitationsSended  : any;
@@ -19,9 +20,13 @@ export class ContactPage {
   newInvitation: any = {};
   selectedLocal: any = {};
   
-  constructor(public invitationsData: UserData, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    this.newInvitation = {};
-    this.invitationsTable = '0';
+  constructor(
+    public invitationsData: UserData, 
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertCtrl: AlertController) {
+      this.newInvitation = {};
+      this.invitationsTable = '0';
   }
 
   resetNewInvitation(){
@@ -85,6 +90,21 @@ export class ContactPage {
         this.newInvitation = {};
         this.invitationsSended.push(response.invitation);
         this.showAlert('Invitación enviada!', 'Una vez que tu amigo responda, recibiras una notificación con su repuesta!');
+      }else{
+        this.showAlert('Error!', response.message);        
+      }
+      this.resetNewInvitation();
+    })
+  }
+
+  cancelInvitation(inv, n){
+    this.invitationsData.cancelInvitation(inv).subscribe((response: any) => {
+      console.log('cancel invitation: '+JSON.stringify(response));
+      if(response.invitation){
+        this.newInvitation = {};
+        this.invitationsSended.splice(n, 1);
+        this.invitationsRejected.push(response.invitation);
+        this.showAlert('Invitación cancelada!', 'La invitación fue cancelada. Puedes invitar a otra persona en su lugar');
       }else{
         this.showAlert('Error!', response.message);        
       }

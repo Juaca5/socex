@@ -15,6 +15,8 @@ export class PointsPage {
 
   selectedLocal: any = {};
 
+  myDate: String = new Date().toISOString();
+
   public config : Config;
   public columns : any;
   public rows : any;
@@ -24,10 +26,12 @@ export class PointsPage {
     public navParams: NavParams,
     private _HTTP: HttpClient) {
 
-      this.columns = [
-        { prop: 'name' },
-        { name: 'Summary' },
-        { name: 'Company' }
+    this.columns = [
+        { name: 'fecha' },
+        { name: 'cuenta' },
+        { name: 'pago' },
+        { name: 'pesos' },
+        { name: 'saldo' }
       ];
    }
 
@@ -36,10 +40,10 @@ export class PointsPage {
     this.selectedLocal = this.navParams.get('local');
 
     this._HTTP
-      .get<Config>('../../assets/data/techologies.json')
+      .get<Config>('../../assets/data/cartola.json')
       .subscribe((data) =>
       {
-         this.rows = data.technologies;
+         this.rows = data.cartola;
       });
   }
 }
