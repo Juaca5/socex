@@ -78,6 +78,7 @@ export class UserData {
           sucursal.web                    = localData.web;
           sucursal.lng                    = parseFloat(sucursal.lng);
           sucursal.lat                    = parseFloat(sucursal.lat);
+          sucursal.cartola                = localData.cartola;
       });
     });
 
@@ -120,16 +121,34 @@ export class UserData {
     }
   };
   cancelInvitation(inv: any) {
-    return this.http.put(this.URL_Invi, {invitation: inv}).map(this.processInvitationResponse, this);
+    return this.http.put(this.URL_Invi, {invitation: inv}).map(this.processCancelInvitation, this);
   }
   processInvitationResponse(data){
     let response = data.json();
     if (response.invitation) {
+       this.data.invitations.push(response.invitation);
        return {type: 'success', invitation: response.invitation};
     } else {
        return {type: 'error',   message: response.error};
     }
   }
+  processCancelInvitation(data){
+    let response = data.json();
+    if(response.invitation) {
+      // rechazar localmente
+      for (var i = 0; i < this.data.invitations.length; i++) {
+        if(this.data.invitations[i].id = response.invitation.id){
+           this.data.invitations[i] = response.invitation;
+           break;
+        }      
+      }
+      return {type: 'success', invitation: response.invitation};
+    } else {
+       return {type: 'error',   message: response.error};
+    }
+  }
+
+
 
   // ==================== notifications ====================
   getNotifications() {
