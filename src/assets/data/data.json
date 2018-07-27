@@ -3,11 +3,25 @@
 "user": {
   "username": "juancarlos",
   "password": "juancarlos",
+  "id_user" : "11111111",
   "name"    : "Juan Carlos Tapia Rojo",
   "email"   : "jc.tapia.rojo@gmail.com",
   "phone"   : 918749123,
   "rut"     : "17.345.234-5",
   "mailNotifications": true
+},
+
+"cartola" : {
+    "rut_user" : "11111111",
+    "id_local" : "0",
+    "total_pesos " : "total de pesos acumulados",
+    "operacion" : [{
+        "fecha" : "3/04/2018",
+        "cuanta": "10.000",
+        "pago" : "10.000",
+        "pesos": "1000",
+        "saldo": "1000" 
+    }]
 },
 
 
@@ -145,7 +159,7 @@
             "dia"     : "Domingo",
             "inicio" : "cerrado",
             "final"  : "cerrado"
-        }] 
+        }],
         "sucursales":[{
           "id": 0,
           "center": true,

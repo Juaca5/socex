@@ -27,8 +27,8 @@ import { ConfirmationPage } from '../pages/confirmation/confirmation';
  *     |--- contact friends (modal page)
  */
 import { HomePage } from '../pages/home/home';
-import { ContactfriendsPage } from '../pages/contactfriends/contactfriends';
 import { CustomersupportPage } from '../pages/customersupport/customersupport';
+//import { ContactfriendsPage } from '../pages/contactfriends/contactfriends';
 /*
  * pages link place
  * |--- place --- filter local
@@ -86,7 +86,7 @@ import { InvitationsData } from '../providers/invitations-data';
     ListplacePage,
     NotificationPage,
     ConfigurationPage,
-    ContactfriendsPage,
+    //ContactfriendsPage,
     CustomersupportPage,
     TabsPage,
     FilterLocalesrPipe,
@@ -110,7 +110,7 @@ import { InvitationsData } from '../providers/invitations-data';
     ConfirmationPage,
     ContactPage,
     HomePage,
-    ContactfriendsPage,
+    //ContactfriendsPage,
     CustomersupportPage,
     PlacePage,
     PointsPage,

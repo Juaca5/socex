@@ -15,6 +15,8 @@ export class PointsPage {
 
   selectedLocal: any = {};
 
+  myDate: String = new Date().toISOString();
+
   public config : Config;
   public columns : any;
   public rows : any;
@@ -25,23 +27,23 @@ export class PointsPage {
     private _HTTP: HttpClient) {
 
     this.columns = [
-        { prop: 'Fecha' },
-        { name: 'Cuenta' },
-        { name: 'Pago' },
-        { name: 'Pesos' },
-        { name: 'Saldo' },
+        { name: 'fecha' },
+        { name: 'cuenta' },
+        { name: 'pago' },
+        { name: 'pesos' },
+        { name: 'saldo' }
       ];
-  }
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartolaPage');
     this.selectedLocal = this.navParams.get('local');
 
     this._HTTP
-      .get<Config>('../../assets/data/techologies.json')
+      .get<Config>('../../assets/data/cartola.json')
       .subscribe((data) =>
       {
-         this.rows = data.technologies;
+         this.rows = data.cartola;
       });
   }
 }

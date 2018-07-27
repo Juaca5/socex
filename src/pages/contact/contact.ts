@@ -12,6 +12,7 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
+
   invitationsAccepted: any;
   invitationsRejected: any;
   invitationsSended  : any;
@@ -19,9 +20,13 @@ export class ContactPage {
   newInvitation: any = {};
   selectedLocal: any = {};
   
-  constructor(public invitationsData: UserData, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    this.newInvitation = {};
-    this.invitationsTable = '0';
+  constructor(
+    public invitationsData: UserData, 
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public alertCtrl: AlertController) {
+      this.newInvitation = {};
+      this.invitationsTable = '0';
   }
 
   resetNewInvitation(){
