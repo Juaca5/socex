@@ -92,6 +92,21 @@ export class ContactPage {
     })
   }
 
+  cancelInvitation(inv, n){
+    this.invitationsData.cancelInvitation(inv).subscribe((response: any) => {
+      console.log('cancel invitation: '+JSON.stringify(response));
+      if(response.invitation){
+        this.newInvitation = {};
+        this.invitationsSended.splice(n, 1);
+        this.invitationsRejected.push(response.invitation);
+        this.showAlert('Invitación cancelada!', 'La invitación fue cancelada. Puedes invitar a otra persona en su lugar');
+      }else{
+        this.showAlert('Error!', response.message);        
+      }
+      this.resetNewInvitation();
+    })
+  }
+
 
   getDaysAgo(date){
     var from = new Date(date);

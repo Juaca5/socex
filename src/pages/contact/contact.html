@@ -28,9 +28,9 @@
                 <ion-input type="text" [(ngModel)]="newInvitation.rut_amigo"></ion-input>
             </ion-item>
 
-            <ion-item>
-              <button ion-button block color="primary" (click)="sendInvitation()"  [hidden]="invitationsAccepted?.length >= 5">Enviar</button>
-              <p style="color: red;" [hidden]="invitationsAccepted?.length < 5" >Ya has enviado tus 5 invitaciones</p>
+            <ion-item >
+              <button ion-button block color="primary" (click)="sendInvitation()"  [hidden]="invitationsSended?.length > 5">Enviar</button>
+              <p style="color: red; text-align: center;" [hidden]="invitationsSended?.length < 5" text-wrap>Ya alcanzado el monto máximo de 5 invitaciones</p>
             </ion-item>
           
           </ion-list>    
@@ -55,7 +55,7 @@
               <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
               <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
               <div class="td column">{{getDaysAgo(i.fecha_enviada)}} 
-                <ion-icon class="cancel_button" name="ios-close-circle-outline" item-start></ion-icon>
+                <ion-icon class="cancel_button" name="ios-close-circle-outline" (click)="cancelInvitation(i, n)" item-start></ion-icon>
               </div>
             </ion-item>
           </ion-list>
@@ -86,7 +86,7 @@
               <div class="td num">{{n+1}}</div>
               <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
               <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
-              <div class="td column">{{i.fecha_canelada | date: 'dd/MM/yyyy'}}</div>
+              <div class="td column">{{i.fecha_cancelada | date: 'dd/MM/yyyy'}}</div>
             </ion-item>
           </ion-list>
 

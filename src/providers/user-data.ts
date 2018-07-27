@@ -119,8 +119,8 @@ export class UserData {
       this.data.invitations.splice(index, 1);
     }
   };
-  updateInvitation(inv: any) {
-    // modificar invitación en servidor
+  cancelInvitation(inv: any) {
+    return this.http.put(this.URL_Invi, {invitation: inv}).map(this.processInvitationResponse, this);
   }
   processInvitationResponse(data){
     let response = data.json();
