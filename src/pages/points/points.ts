@@ -24,14 +24,12 @@ export class PointsPage {
     public navParams: NavParams,
     private _HTTP: HttpClient) {
 
-    this.columns = [
-        { prop: 'Fecha' },
-        { name: 'Cuenta' },
-        { name: 'Pago' },
-        { name: 'Pesos' },
-        { name: 'Saldo' },
+      this.columns = [
+        { prop: 'name' },
+        { name: 'Summary' },
+        { name: 'Company' }
       ];
-  }
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartolaPage');
