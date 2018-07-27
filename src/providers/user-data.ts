@@ -12,7 +12,9 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class UserData {
 
-  URL_base: string  = 'http://pace.uv.cl/socex_backend/index.php';//'http://localhost/socex_backend/index.php';//'http://31.220.104.182';
+URL_base: string  = 'http://socex-backend.esy.es/socex_backend/socex_backend/index.php'
+//'http://pace.uv.cl/socex_backend/index.php';
+//'http://localhost/socex_backend/index.php';//'http://31.220.104.182';
   URL_login: string = this.URL_base+'/API_Login';
   URL_data:  string = this.URL_base+'/API_Data';
   URL_Noti:  string = this.URL_base+'/API_Notifications';
