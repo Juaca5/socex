@@ -29,7 +29,7 @@ export class HomePage {
   ionViewDidEnter() {
     console.log('ionViewDidEnter HomePage');
     this.notisData.getNotifications().subscribe((notifications: any) => {
-      if(notifications instanceof String){
+      if(!notifications || notifications instanceof String){
         this.showError();
         return;
       }

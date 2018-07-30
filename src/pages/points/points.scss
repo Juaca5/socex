@@ -52,10 +52,13 @@ page-points {
           text-align: center;
         }
     }
+
     .datatable-header {
       background: #868686;
       padding: 1em 0 0 1em;
-   }
+      padding: 7px 0px;
+      text-align: center;
+    }
 
    .datatable-header-cell {
       font-size: 1.2em;
@@ -76,7 +79,7 @@ page-points {
 
    .datatable-body-cell {
       font-size: 1.2em;
-      padding: 1em;
+      padding: 6px 9px;
    }
 
    // Style footer appearance
@@ -115,7 +118,16 @@ page-points {
    .datatable-icon-prev:before {
       content: "<<";
    }
-
+   .pager{
+    display: none!important;
+   }
+   .noResults{
+    text-align: center;
+    padding-top: 20px;
+   }
+   .noResultsIcon{
+    font-size: 40px;
+   }
 
   .ngx-datatable .datatable-header .datatable-header-cell .datatable-header-cell-template-wrap {
     color: #eee!important;

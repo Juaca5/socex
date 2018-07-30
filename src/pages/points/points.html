@@ -7,7 +7,7 @@
   
   <ion-content>
 
-  <ion-scroll scrollY="false" class="noScroll">
+  <div>
     <a class="pageLink" (click)="LocalDetails()">+Info Local</a>
     <a class="pageLinkright" (click)="backToPlace()">Seleccionar<br>otro Local</a>
     <div class="centerform" center text-center>
@@ -20,7 +20,7 @@
             <ion-label text-center class="color_aux pointsLabel">{{selectedLocal?.pesos | currency:'$':'symbol':'1.0-0'}}</ion-label>          
           </ion-list>    
     </div>
-  </ion-scroll>
+  </div>
   
   <div>
         <!--
@@ -37,14 +37,16 @@
                            equidistant and span the width of the parent container
            8. limit - the number of records to display before paginating the results
         -->
-      <ngx-datatable
+      <ngx-datatable  style="height: 330px;"
         [sortType]="'off'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="50"
+        [headerHeight]="40"
+        [footerHeight]="30"
+        [rowHeight]="30"
         [rows]="rows"
         [columns]="columns"
         [columnMode]="'force'"
+        [scrollbarV]="true"
+        [messages]="messages"
         >
       </ngx-datatable>
   </div>

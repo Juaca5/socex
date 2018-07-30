@@ -16,10 +16,10 @@
   <ion-list>
     <ion-item id="userInfo">
       <ion-avatar item-start>
-        <img style="width: 120px; height: 120px;" src="assets/imgs/user.png">
+        <img style="width: 120px; height: 120px;" src="{{user.avatar}}">
       </ion-avatar>
       <h2>{{user.nombres}} {{user.paterno}} {{user.materno}}</h2>
-      <p>{{user.email}}</p>
+      <p>{{user.email_old}}</p>
     </ion-item>
   </ion-list>
 
@@ -28,20 +28,31 @@
       <ion-icon name="person"></ion-icon> Cuenta de usuario
     </ion-list-header>
     <ion-item>
-  	  <ion-label fixed>Rut:</ion-label>
-  	  <ion-input type="text" disabled  [(ngModel)]="user.rut"></ion-input>
-  	</ion-item>
+      <ion-label fixed>Rut:</ion-label>
+      <ion-input type="text" disabled  [(ngModel)]="user.rut_cliente"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Nombres:</ion-label>
+      <ion-input type="text" [disabled]="!editabledForm" [(ngModel)]="user.nombres"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Apellido Paterno:</ion-label>
+      <ion-input type="text" [disabled]="!editabledForm" [(ngModel)]="user.paterno"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Apellido Materno:</ion-label>
+      <ion-input type="text" [disabled]="!editabledForm" [(ngModel)]="user.materno"></ion-input>
+    </ion-item>
+
     <ion-item>
   	  <ion-label fixed>Email:</ion-label>
-  	  <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  	  <ion-input type="text" [disabled]="!editabledForm" [(ngModel)]="user.email"></ion-input>
   	</ion-item>
     <ion-item>
   	  <ion-label fixed>Teléfono:</ion-label>
-  	  <ion-input type="phone" [(ngModel)]="user.telefono"></ion-input>
+  	  <ion-input type="phone" [disabled]="!editabledForm" [(ngModel)]="user.telefono"></ion-input>
   	</ion-item>
-
-    <ion-item>
-    </ion-item>
 
   </ion-list>
 
@@ -51,17 +62,39 @@
     </ion-list-header>
     <ion-item>
   	  <ion-label>Enviar notificaciones a Email</ion-label>
-  	  <ion-checkbox [(ngModel)]="user.recibir_mail" color="primary" item-end></ion-checkbox>
+  	  <ion-checkbox [disabled]="!editabledForm" [(ngModel)]="user.recibir_mail" color="primary" item-end></ion-checkbox>
   	</ion-item>
     <ion-item>
   	  <ion-label fixed>Contraseña:</ion-label>
-  	  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  	  <ion-input type="password" [disabled]="!editabledForm" [(ngModel)]="user.password"></ion-input>
   	</ion-item>
   </ion-list>
 
-  <ion-list>
-	<ion-item>
-  		<button (click)="logout()" ion-button outline block text-wrap>Cerrar Sesión</button>
-	</ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 [hidden]="editabledForm">
+          <button (click)="setEditable(true)" ion-button block text-wrap icon-start>
+            <ion-icon name="ios-create-outline"></ion-icon> Editar información
+          </button>
+      </ion-col>
+
+      <ion-col col-6 [hidden]="!editabledForm">
+          <button (click)="updateUser()" ion-button block text-wrap icon-start>
+            <ion-icon name="ios-checkmark-circle-outline"></ion-icon> Guardar
+          </button>
+      </ion-col>
+      <ion-col col-6 [hidden]="!editabledForm">
+          <button (click)="setEditable(false)" ion-button outline block text-wrap icon-start>
+            <ion-icon name="ios-close-circle-outline"></ion-icon> Cancelar
+          </button>
+      </ion-col>
+
+      <ion-col col-12 [hidden]="editabledForm">
+          <button (click)="logout()" ion-button outline block text-wrap icon-start>
+            <ion-icon name="ios-power-outline"></ion-icon> Cerrar Sesión
+          </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

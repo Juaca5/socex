@@ -19,6 +19,7 @@ export class PointsPage {
   selectedLocal: any = {};
   myDate: String = new Date().toISOString();
   today: any;
+  messages: any;
 
   public config : Config;
   public columns : any;
@@ -38,7 +39,13 @@ export class PointsPage {
         { name: 'Pesos' },
         { name: 'Saldo' }
       ];
-   }
+    this.messages = {
+      emptyMessage: `
+        <div class="noResults">
+          No hay información para este local
+        </div>`
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartolaPage');
