@@ -116,7 +116,7 @@ export class ContactPage {
     var from = new Date(date);
     var now  = new Date();
     var day = 86400000;
-    var diff = now - from;
+    var diff = now.getMilliseconds() - from.getMilliseconds();
     var result = Math.trunc(diff / day);
 
     console.log(now +' - '+from);
