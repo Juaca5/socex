@@ -31,14 +31,14 @@ export class ContactPage {
 
   resetNewInvitation(){
     this.newInvitation = {
+      rut_cliente     : this.invitationsData.getUser().rut_cliente,
       rut_amigo       : '',
       nombre_amigo    : '',
-      apellidos_amigo : '',
-      pesos           : 1000, 
-      estado          : 'enviada',
-      rut_user        : this.invitationsData.getUser().rut,
-      idEmpresa       : this.selectedLocal.idEmpresa,
-      idLocal         : this.selectedLocal.id
+      apellido_amigo : '',
+      pesos           : this.selectedLocal.acumula_amigo, 
+      estado          : 'I',
+      id_empresa      : this.selectedLocal.idEmpresa,
+      id_local        : this.selectedLocal.id
     }
   }
   ionViewDidLoad() {
@@ -50,13 +50,13 @@ export class ContactPage {
       this.invitationsRejected = [];
 
       for (var i = 0; i < invitations.length; i++) {
-        if (invitations[i].estado == 'enviada') {
+        if (invitations[i].estado == 'I') {
           this.invitationsSended.push(invitations[i]);
         }
-        else if (invitations[i].estado == 'aceptada') {
+        else if (invitations[i].estado == 'E') {
           this.invitationsAccepted.push(invitations[i]);
         }
-        else if (invitations[i].estado == 'cancelada') {
+        else if (invitations[i].estado == 'C') {
           this.invitationsRejected.push(invitations[i]);
         }
       }
@@ -115,12 +115,17 @@ export class ContactPage {
   getDaysAgo(date){
     var from = new Date(date);
     var now  = new Date();
-    let diff = new Date(now.getTime() - from.getTime());
-    return diff.getDate();
+    var day = 86400000;
+    var diff = now - from;
+    var result = Math.trunc(diff / day);
+
+    console.log(now +' - '+from);
+    console.log(result);
+    return result;
   }
 
   validateNewInvitation(){
-      if(!this.newInvitation.rut_amigo || !this.newInvitation.nombre_amigo || !this.newInvitation.apellidos_amigo){
+      if(!this.newInvitation.rut_amigo || !this.newInvitation.nombre_amigo || !this.newInvitation.apellido_amigo){
         this.showAlert('Error!', 'Ingrese la información del amigo invitado por favor.');        
       }
   }

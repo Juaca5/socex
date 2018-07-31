@@ -34,7 +34,6 @@ export class Login {
     console.log('ionViewDidLoad Login');
   }
 
-
   login(){
     this.error = undefined;
     if(!this.username || !this.password){
@@ -45,7 +44,7 @@ export class Login {
     if(this.network.onConnect){
       this.userData.login(this.username, this.password).subscribe((sucess: any) => {
         if(sucess == true){
-          this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.push(TabsPage);
         }else{
           this.error = 'Nombre de usuario o contraseña incorrecta.';
         }

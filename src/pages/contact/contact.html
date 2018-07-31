@@ -20,7 +20,7 @@
           
             <ion-item>
               <ion-label stacked>Apellido amigo/a</ion-label>
-              <ion-input type="text" [(ngModel)]="newInvitation.apellidos_amigo"></ion-input>
+              <ion-input type="text" [(ngModel)]="newInvitation.apellido_amigo"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -52,9 +52,9 @@
             </ion-item>
             <ion-item class="row" *ngFor="let i of invitationsSended; let n = index">
               <div class="td num">{{n+1}}</div>
-              <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
-              <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
-              <div class="td column">{{getDaysAgo(i.fecha_enviada)}} 
+              <div class="td invitado">{{i.nombre_amigo}} {{i.apellido_amigo}}</div>
+              <div class="td column">{{i.dt_invitacion | date: 'dd/MM/yyyy'}}</div>
+              <div class="td column">{{getDaysAgo(i.dt_invitacion)}} 
                 <ion-icon class="cancel_button" name="ios-close-circle-outline" (click)="cancelInvitation(i, n)" item-start></ion-icon>
               </div>
             </ion-item>
@@ -69,8 +69,8 @@
             </ion-item>
             <ion-item class="row" *ngFor="let i of invitationsAccepted; let n = index">
               <div class="td num">{{n+1}}</div>
-              <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
-              <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
+              <div class="td invitado">{{i.nombre_amigo}} {{i.apellido_amigo}}</div>
+              <div class="td column">{{i.dt_invitacion | date: 'dd/MM/yyyy'}}</div>
               <div class="td column">{{i.pesos}}</div>
             </ion-item>
           </ion-list>
@@ -84,9 +84,9 @@
             </ion-item>
             <ion-item class="row" *ngFor="let i of invitationsRejected; let n = index">
               <div class="td num">{{n+1}}</div>
-              <div class="td invitado">{{i.nombre_amigo}} {{i.apellidos_amigo}}</div>
-              <div class="td column">{{i.fecha_enviada | date: 'dd/MM/yyyy'}}</div>
-              <div class="td column">{{i.fecha_cancelada | date: 'dd/MM/yyyy'}}</div>
+              <div class="td invitado">{{i.nombre_amigo}} {{i.apellido_amigo}}</div>
+              <div class="td column">{{i.dt_invitacion | date: 'dd/MM/yyyy'}}</div>
+              <div class="td column">{{i.dt_enrole | date: 'dd/MM/yyyy'}}</div>
             </ion-item>
           </ion-list>
 
