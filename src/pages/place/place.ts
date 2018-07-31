@@ -19,10 +19,10 @@ declare var google: any;
 export class FilterLocalesrPipe implements PipeTransform {  
     transform(items: any[], filter: any): any {  
         var array = [];
-        var name = filter.name.toLowerCase();
+        var name = filter.name.toLowerCase();       
         if (items && filter) {  
           for (var i = 0; i < items.length; i++) {
-            if(!name || items[i].nombre.toLowerCase().indexOf(name)){
+            if(!name || items[i].nombre.toLowerCase().indexOf(name) >= 0){
               for (var j = 0; j < items[i].sucursales.length; j++) {
                 array.push(items[i].sucursales[j]);
               }

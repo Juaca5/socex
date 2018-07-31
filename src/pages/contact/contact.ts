@@ -31,14 +31,14 @@ export class ContactPage {
 
   resetNewInvitation(){
     this.newInvitation = {
+      rut_cliente     : this.invitationsData.getUser().rut_cliente,
       rut_amigo       : '',
       nombre_amigo    : '',
       apellido_amigo : '',
       pesos           : this.selectedLocal.acumula_amigo, 
       estado          : 'I',
-      rut_cliente        : this.invitationsData.getUser().rut,
-      id_empresa       : this.selectedLocal.idEmpresa,
-      id_local         : this.selectedLocal.id
+      id_empresa      : this.selectedLocal.idEmpresa,
+      id_local        : this.selectedLocal.id
     }
   }
   ionViewDidLoad() {
@@ -115,8 +115,13 @@ export class ContactPage {
   getDaysAgo(date){
     var from = new Date(date);
     var now  = new Date();
-    let diff = new Date(now.getTime() - from.getTime());
-    return diff.getDate();
+    var day = 86400000;
+    var diff = now - from;
+    var result = Math.trunc(diff / day);
+
+    console.log(now +' - '+from);
+    console.log(result);
+    return result;
   }
 
   validateNewInvitation(){

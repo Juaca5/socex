@@ -43,7 +43,7 @@ export class UserData {
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return this.http.get(this.URL_data+'/'+this.user.rut_cliente+'/'+this.user.token)
+      return this.http.get(this.URL_data+'/'+this.user.id+'/'+this.user.token)
         .map(this.processData, this);
     }
   }
@@ -145,7 +145,7 @@ export class UserData {
     return this.getInvitations();
   }
   sendInvitation(inv: any) {
-    return this.http.post(this.URL_Invi, {invitation: inv}).map(this.processInvitationResponse, this);
+    return this.http.post(this.URL_Invi, {invitation: inv, idUser: this.user.id, token: this.user.token}).map(this.processInvitationResponse, this);
   };
   removeInvitation(inv: any) {
     inv.checked = true;
@@ -155,7 +155,7 @@ export class UserData {
     }
   };
   cancelInvitation(inv: any) {
-    return this.http.put(this.URL_Invi, {invitation: inv}).map(this.processCancelInvitation, this);
+    return this.http.put(this.URL_Invi, {invitation: inv, idUser: this.user.id, token: this.user.token}).map(this.processCancelInvitation, this);
   }
   processInvitationResponse(data){
     let response = data.json();
@@ -196,25 +196,13 @@ export class UserData {
     return this.getNotifications();
   }
 
-  addNotification(inv: any) {
-    // insert invitación en el servidor
-    this.http.post(this.URL_Noti, {id: inv.id}).subscribe( 
-        response => {
-            this.data.notifications.push(inv);
-        },
-        error => {
-          console.log('Error add notification: '+JSON.stringify(error));
-          return {type: 'danger', message: error.message}
-    });
-  };
-
   deleteNotification(inv: any) {
-    return this.http.delete(this.URL_Noti+'/'+inv.id).map(this.processNotificationResponse, this);
+    return this.http.delete(this.URL_Noti+'/'+inv.id+'/'+this.user.id+'/'+this.user.token).map(this.processNotificationResponse, this);
   };
 
   LeerNotification(inv: any) {
     inv.leida = true;
-    return this.http.put(this.URL_Noti, {invitation: inv}).map(this.processNotificationResponse, this);
+    return this.http.put(this.URL_Noti, {notification: inv, idUser: this.user.id, token: this.user.token}).map(this.processNotificationResponse, this);
   }
   processNotificationResponse(data: any){
     let response = data.json();
